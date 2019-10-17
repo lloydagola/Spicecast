@@ -1,0 +1,33 @@
+.hero{    
+    height: 36vh;
+    margin: 0;
+    padding: 0;
+    
+}
+
+/*Galaxy S5*/
+@media screen and (min-width:360px){
+    .hero{
+        height: 18vh;
+    }
+
+}
+
+/*pixel 2, iPhone 6/7/8 plus*/
+@media screen and (min-width:400px){
+    .hero{
+        height: 21vh;
+    }    
+}
+
+@media screen and (min-width:1200px){
+    .hero{
+        height: 30vh;
+    }
+}
+
+@media screen and (min-width:1400px){
+    .hero{
+        height: 24vh;
+    }
+}

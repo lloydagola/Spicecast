@@ -1,0 +1,29 @@
+*{
+  color:#fff;
+}
+
+.App {
+  position: relative;
+  margin: 0;
+  padding-bottom: 120px;
+  overflow-x: hidden;
+  cursor: default;
+  background: linear-gradient(to bottom, transparent, 60%, #00030A), url("http://localhost:3000/images/hero.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media screen and (min-width:768px){
+  .App{
+    background-size: cover;
+  }
+}
+
+@media screen and (min-width:1200px){
+  .App{
+    padding-bottom: 100px;
+    background-size: cover;
+  }
+}
+
+

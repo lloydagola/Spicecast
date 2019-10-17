@@ -1,0 +1,84 @@
+.main-menu{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+    padding: 0 8px;
+}
+
+.menu-items{
+    display: none;
+}
+
+.menu-logo{
+    font-size: 1.2em;
+}
+
+.menu-logo > a{
+    text-decoration: none;
+}
+
+.menu-logo h1{
+    margin: 0;
+}
+
+
+
+.podcast-grid-horizontal-line{
+    background-color: #fff;
+    margin-left: 32px;
+    width: 68px;
+    height: 4px;
+}
+
+@media screen and (min-width:480px){
+
+}
+@media screen and (min-width:600px){
+
+}
+
+/*ipad*/
+@media screen and (min-width:768px){
+   
+    .menu-items{
+        display: flex;
+        flex-direction: row;
+        list-style-type: none;
+        align-items: center;
+        padding: 0;
+        right: -30%;
+        position: relative;
+    }
+
+    .menu-items > li{
+        padding-left: 40px;
+        font-size: 1.2em;
+        text-decoration: none;
+    }
+
+    .menu-items > li > a{
+        text-decoration: none;
+    }
+}
+@media screen and (min-width:900px){
+
+}
+
+/*ipad Pro*/
+@media screen and (min-width:1024px){
+
+}
+/*laptops*/
+@media screen and (min-width:1200px){
+    .main-menu{
+        padding: 0 48px;
+    }
+    .menu-items{       
+        right: -60%;
+    }  
+}
+@media screen and (min-width:1400px){
+
+}

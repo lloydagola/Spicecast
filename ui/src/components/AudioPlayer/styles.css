@@ -1,0 +1,33 @@
+#audio-player{
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
+    z-index: 10000;
+    cursor: pointer;
+    background-color: rgba(1,1,1,0.8);
+    padding: 0 16px;
+}
+
+
+audio{
+    color: #fff;
+}
+
+@media screen and (min-width:1200px){
+    #audio-player{
+        flex-direction: row;
+        width: calc(100% - 32px);
+        align-items: center;
+    }
+
+    audio{        
+        flex: 1;
+    }
+    
+    .audio-details{
+        width: 20%;
+    }
+}
+

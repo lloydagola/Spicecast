@@ -1,0 +1,139 @@
+.single-podcast{
+    height: 308px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-view{
+    position: relative;
+    overflow: hidden;
+}
+
+.single-podcast .image-view img{   
+    max-width: 100%;
+    transition: transform .5s;
+}
+
+.podcast-text{
+    position: absolute;
+    top: 0;
+    margin: 16px 0 0 16px;
+}    
+
+.podcast-play{
+    font-size: 1.2em;
+    margin: 16px;
+    background: none;
+    bottom: 0;
+}
+
+.podcast-text > h2{
+    padding: 0;
+}
+
+.podcast-horizontal-line{
+    background-color: #fff;
+    width: 32px;
+    height: 4px;
+    transition: .2s;
+}
+
+.single-podcast:hover .image-view .podcast-horizontal-line{
+    width: 60px;
+}
+
+.podcast-details{  
+    position: absolute;
+    z-index: 1;  
+    display: flex;
+    flex-direction: column;
+}
+
+.playlist-view{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    transform: translate(0, 248px); 
+    background-color: rgba(10, 10, 10, 0.5);
+}
+
+/*Galaxy S5*/
+@media screen and (min-width:360px){
+    .single-podcast{
+        height: 348px;
+    }
+
+    .playlist-view{
+        transform: translate(0, 288px); 
+    }
+}
+
+/*iphone 6/7/8 */
+@media screen and (min-width:372px){
+    .single-podcast{
+        height: 362px;
+    }
+
+    .playlist-view{
+        transform: translate(0, 296px); 
+    }
+}
+
+/*pixel 2XL, iPhone 6/7/8 plus*/
+@media screen and (min-width:400px){
+    .single-podcast{
+        height: 400px;
+    }
+
+    .playlist-view{
+        transform: translate(0, 340px); 
+    }
+}
+
+/*ipad*/
+@media screen and (min-width:768px){
+    .single-podcast{
+        height: 378px;
+    }
+    .playlist-view{
+        transform: translate(0, 320px); 
+    }
+    .single-podcast:hover .image-view img{
+        transform: scale(1.2);
+    }
+}
+
+/*ipad Pro*/
+@media screen and (min-width:1024px){
+    .single-podcast{
+        height: 498px;
+    }
+    .playlist-view{
+        transform: translate(0, 440px); 
+    }
+}
+
+@media screen and (min-width:1200px){
+    .single-podcast{
+        height: 292px;
+    }
+
+    .playlist-view{       
+        transform: translate(0, 240px); 
+    }
+}
+
+/*hidpi laptops*/
+@media screen and (min-width:1400px){
+    .single-podcast{
+        height: 290px;
+    }
+   
+    .playlist-view{
+        transform: translate(0, 220px); 
+    }
+}
