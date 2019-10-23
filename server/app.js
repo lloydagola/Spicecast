@@ -7,6 +7,7 @@ const cors = require("cors");
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const podcastRouter = require('./routes/podcasts');
+const episodeRouter = require('./routes/episodes');
 
 const mongoose = require("mongoose")
 
@@ -30,5 +31,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use("/podcasts", podcastRouter)
 app.use('/users', usersRouter);
+app.use('/episodes', episodeRouter);
 
 module.exports = app;

@@ -1,23 +1,29 @@
 import React from 'react';
 import './styles.css';
+import {AppConsumer} from '../../context';
 import SinglePodcast from '../../components/SinglePodcast';
 import MainMenu from '../../components/MainMenu';
 
 const renderPodcasts = podcasts => podcasts.length < 1
     ?"No podcasts..."
-    :podcasts.map((podcast, index) => <SinglePodcast key={index} title={podcast.title} thumbnail={podcast.thumbnail} />)
+    :podcasts.map((podcast, index) => <SinglePodcast key={index} title={podcast.title} hosts={podcast.hosts} thumbnail={podcast.thumbnail} episodes={podcast.episodes}/>)
     
 
 
 
 
 const PodcastGrid = (props) => (
-    <section className ="podcast-grid">       
-        <MainMenu/>
-        <div className="podcast-grid-container">
-            {renderPodcasts(props.podcasts)}        
-        </div>
-    </section>
+    <AppConsumer>
+        { 
+            state =>   <section className ="podcast-grid">       
+                                <MainMenu/>
+                                <div className="podcast-grid-container">
+                                    {renderPodcasts(state.podcasts)}        
+                                </div>
+                            </section>
+        }
+    </AppConsumer>
+    
 );
 
 export default PodcastGrid;

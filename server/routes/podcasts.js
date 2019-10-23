@@ -5,12 +5,11 @@ const Podcast = require("../models/podcast");
 const router = express.Router();
 
 router.get("/", (request, response) => {
-
     Podcast
     .find()
+    .populate("episodes")
     .then(podcasts => response.status(200).send(podcasts))
-    .catch(error => response.status(400).send(error))
-   
+    .catch(error => response.status(400).send(error));   
 });
 
 router.get("/:_id/episodes", (request, response) => {
