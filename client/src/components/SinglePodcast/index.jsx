@@ -14,19 +14,19 @@ const SinglePodcast = (props) => <div className="single-podcast">
                                         <img src={props.thumbnail} alt={`${props.title} podcast thumbnail`}/>                                            
                                     </div>
                                     <AppConsumer>
-                                        { state => <PlaylistView episodes={props.episodes}/> }
+                                        { state => <PlaylistView episode={props.episodes[props.episodes.length -1]} podcast={props.title}/> }
                                     </AppConsumer>   
                                     <div className="podcast-vertical-widget">
                                         <p className="podcast-vertical-text">
                                             <b>007</b>                           
                                         </p>
-                                        <div className="vertical-line"/>
+                                        <div className="vertical-line white"/>
                                         <div className="social-links"> 
                                             <i className="fab fa-facebook-f"/>
                                             <i className="fab fa-instagram"/>
                                             <i className="fab fa-twitter"/>
                                         </div>             
-                                        <div className="vertical-line"/>
+                                        <div className="vertical-line white"/>
                                     </div>                       
                                  </div>
                    

@@ -27,7 +27,7 @@
 .single-podcast .image-view img{ 
     transition: transform .5s;
     height: 350px;
-    width: 100%;
+    min-width: 100%;
 }
 
 .podcast-text{
@@ -97,12 +97,6 @@
 
 .social-links > i:hover{
     color: yellow;
-}
-
-.vertical-line{
-    height: 100%;
-    width: 2px;
-    background-color: white;
 }
 
 /*Galaxy S5*/
@@ -177,7 +171,6 @@
     .single-podcast:hover .image-view img{
         transform: scale(1.2);
          
-        height: 320px;
     }
 
     .single-podcast:hover .filter{

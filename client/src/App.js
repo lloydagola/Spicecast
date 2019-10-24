@@ -26,25 +26,21 @@ class App extends React.Component {
         playlist : []
       },
       podcasts:[],
-      playTrack: this.playTrack
+      playTrack: track => this.setState(
+          {
+            ...this.state,
+            audioState:{   
+              ...this.state.audioState,           
+              playing:true,
+              nowPlaying:track
+            }
+          }
+        )
+      
     }
-  };
 
-  playTrack(track){
-    /*
-    this.setState(
-      {
-        audioState:{
-          ...this.state.audioState,
-          playing:true,
-          nowPlaying:track
-        }
-      }
-    )
-    */
-   console.log("Now playing ", track.title);
-   
-  }
+    
+  };
 
   fetchPodcasts(url = "http://localhost:3000/podcasts") {
     fetch(url)
