@@ -1,5 +1,5 @@
 .single-podcast{
-    height: 300px;
+    height: 350px;
     display: grid;
     align-items: center;
     cursor: pointer;
@@ -20,11 +20,14 @@
 .image-view{
     position: relative;
     overflow: hidden;
+    height: 100%;
+    width: 100%;
 }
 
-.single-podcast .image-view img{   
-    max-width: 100%;
+.single-podcast .image-view img{ 
     transition: transform .5s;
+    height: 350px;
+    width: 100%;
 }
 
 .podcast-text{
@@ -105,7 +108,11 @@
 /*Galaxy S5*/
 @media screen and (min-width:360px){
     .single-podcast{
-        height: 340px;
+        height: 380px;
+    }
+
+    .single-podcast .image-view img{   
+        height: 380px;
     }
 
     
@@ -114,7 +121,11 @@
 /*iphone 6/7/8 */
 @media screen and (min-width:372px){
     .single-podcast{
-        height: 358px;
+        height: 388px;
+    }
+
+    .single-podcast .image-view img{   
+        height: 388px;
     }
 
     
@@ -123,7 +134,11 @@
 /*pixel 2XL, iPhone 6/7/8 plus*/
 @media screen and (min-width:400px){
     .single-podcast{
-        height: 395px;
+        height: 460px;
+    }
+
+    .single-podcast .image-view img{   
+        height: 460px;
     }
 
     
@@ -132,7 +147,11 @@
 /*ipad*/
 @media screen and (min-width:768px){
     .single-podcast{
-        height: 370px;
+        height: 420px;
+    }
+
+    .single-podcast .image-view img{   
+        height: 420px;
     }
     
     
@@ -141,23 +160,30 @@
 /*ipad Pro*/
 @media screen and (min-width:1024px){
     .single-podcast{
-        height: 490px;
+        height: 520px;
+    }
+
+    .single-podcast .image-view img{   
+        height: 520px;
     }
     
 }
 
 @media screen and (min-width:1200px){
     .single-podcast{
-        height: 286px;
+        height: 320px;
     }
 
     .single-podcast:hover .image-view img{
         transform: scale(1.2);
+         
+        height: 320px;
     }
 
     .single-podcast:hover .filter{
         background-color: rgba(0, 0, 0, 0);
     }
+
 
     
 }
@@ -165,6 +191,21 @@
 /*hidpi laptops*/
 @media screen and (min-width:1400px){
     .single-podcast{
-        height: 352px;
+        height: 312px;
+    }
+    
+    .single-podcast .image-view img{   
+        height: 312px;
+    }
+}
+
+/*hidpi laptops*/
+@media screen and (min-width:1500px){
+    .single-podcast{
+        height: 382px;
+    }
+    
+    .single-podcast .image-view img{   
+        height: 382px;
     }
 }

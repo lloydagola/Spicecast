@@ -4,7 +4,7 @@ import {AppConsumer} from '../../context';
 
 const renderPlaylist = (playlist, playTrack) => playlist.map(
                                         (episode, index) => <div key={index} className="podcast-play">
-                                                                <i className="far fa-play-circle" onClick={() => playTrack(episode)}/> {episode.title}                        
+                                                                <i className="far fa-play-circle" onClick={() => playTrack(episode)}/> <p>{episode.title} </p>                       
                                                             </div>   
                                     );
 

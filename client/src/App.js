@@ -56,16 +56,11 @@ class App extends React.Component {
   }
   
 
-  componentDidMount(){
-
-    console.log('componentDidMount');
-    this.fetchPodcasts();
-    
+  componentDidMount(){ 
+    this.fetchPodcasts();    
   }
 
-  render(){  
-    console.log(this.state);
-    
+  render(){      
     return (
       <div className="App">
         <AppProvider value={{...this.state}}>

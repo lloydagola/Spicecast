@@ -8,7 +8,7 @@
   padding-bottom: 120px;
   overflow-x: hidden;
   cursor: default;
-  background: linear-gradient(to bottom, transparent, 60%, #00030A), url("http://localhost:3000/images/hero.jpg");
+  background: linear-gradient(to bottom, transparent, 50%, #fff), url("http://localhost:3000/images/hero2.jpeg");
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
