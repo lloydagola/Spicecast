@@ -11,10 +11,10 @@ const PlaylistView = props => {
     else return <AppConsumer>
                     {
                        state => <div className="playlist-view">
-                       <div className="podcast-play" onClick={() => state.playTrack({...props.episode, podcast:{...props.episode.podcast, title:props.podcast}})}>
-                                                    <i className="far fa-play-circle"/> <p>{props.episode.title} </p>                       
-                                                </div>  
-                       </div>
+                                    <div className="podcast-play" onClick={() => state.playTrack({...props.episode, podcast:{...props.episode.podcast, title:props.podcast}})}>
+                                       <i className="far fa-play-circle"/> <p>{props.episode.title} </p>                       
+                                    </div>  
+                                </div>
                     }
                 </AppConsumer>  
                         

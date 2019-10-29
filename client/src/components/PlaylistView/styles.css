@@ -9,6 +9,11 @@
     margin-bottom: 24px;
 }
 
+.playlist-view:hover .podcast-play p,
+.playlist-view:hover .podcast-play i{
+    color: darkorange;
+}
+
 .podcast-play p, 
 .podcast-play i{
     color: #333;

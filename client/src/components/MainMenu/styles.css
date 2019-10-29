@@ -1,10 +1,11 @@
 .main-menu{
-    height: 50px;
+    height: 60px;
     display: flex;
     flex-direction: row;
     align-items: center;
     margin: auto;
     padding: 0 8px;
+    background-color: #333;
 }
 
 .menu-items{
@@ -12,7 +13,7 @@
 }
 
 .menu-logo{
-    font-size: 1.2em;
+    font-size: .7em;
 }
 
 .menu-logo > a{

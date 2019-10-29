@@ -1,9 +1,11 @@
 import React from 'react';
 import './App.css';
 import {AppProvider} from './context';
+import MainMenu from './components/MainMenu';
 import Hero from './layouts/Hero';
 import PodcastGrid from './layouts/PodcastGrid';
 import AudioPlayer from './components/AudioPlayer';
+import Footer from './layouts/Footer';
 
 class App extends React.Component {
 
@@ -14,15 +16,16 @@ class App extends React.Component {
       audioState : {
         playing : false,
         nowPlaying:{
-          title : "Piss Poss",
+          title: "B.Y.O.B",
+          path: "http://localhost:3000/audio/bubbles.mp3",
+          thumbnail: "http://localhost:3000/images/no-image.png",
+          _id: "5daff1899a645939c0471689",
           podcast: {
-            "_id": "5d709cd63eb0e22750940d2d",
-            "title": "Nostra"
-        },
-          length:4.5,
-          time:0.0
-        },
-        playlistIsHidden : true,
+              _id: "5d709cd63eb0e22750940d2d",
+              title: "Nostra"
+          }
+      },
+        playlistIsHidden : false,
         playlist : []
       },
       podcasts:[],
@@ -35,7 +38,11 @@ class App extends React.Component {
               nowPlaying:track
             }
           }
-        )
+      ),
+      stopTrack: track => this.setState({}),
+      pauseTrack: track => this.setState({}),
+      nextTrack: () => this.setState({}),
+      previousTrack: () => this.setState({})
       
     }
 
@@ -60,9 +67,11 @@ class App extends React.Component {
     return (
       <div className="App">
         <AppProvider value={{...this.state}}>
+          <MainMenu/>
           <Hero/>
           <PodcastGrid/>
           <AudioPlayer />
+          <Footer />
         </AppProvider>
       </div>
     );

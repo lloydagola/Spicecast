@@ -2,7 +2,6 @@ import React from 'react';
 import './styles.css';
 import {AppConsumer} from '../../context';
 import SinglePodcast from '../../components/SinglePodcast';
-import MainMenu from '../../components/MainMenu';
 
 const renderPodcasts = podcasts => podcasts.length < 1
     ?"No podcasts..."
@@ -15,8 +14,7 @@ const renderPodcasts = podcasts => podcasts.length < 1
 const PodcastGrid = (props) => (
     <AppConsumer>
         { 
-            state =>   <section className ="podcast-grid">       
-                                <MainMenu/>
+            state =>   <section className ="podcast-grid">
                                 <div className="podcast-grid-container">
                                     {renderPodcasts(state.podcasts)}        
                                 </div>
