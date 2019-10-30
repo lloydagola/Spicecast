@@ -8,11 +8,12 @@ class AudioPlayer extends React.Component{
         super(props);
     }
 
-    componentDidUpdate(previousProps, previousState){
-        console.log("this.player.src",this.player.src);
-        console.log("previousProps",previousProps);
-        console.log("previousState",previousState);
-        this.player.pause();
+    componentDidUpdate(previousProps, previousState){       
+
+        if(!this.props.playing){
+            this.player.pause();
+            return;
+        }
         this.player.currentTime = 0;
         this.player.play();                
     }

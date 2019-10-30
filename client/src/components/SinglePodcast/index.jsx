@@ -11,7 +11,7 @@ const SinglePodcast = (props) => <div className="single-podcast">
                                             <div className="podcast-horizontal-line"/>
                                         </div> 
                                         <div className="filter"/>
-                                        <img src={props.thumbnail} alt={`${props.title} podcast thumbnail`}/>                                            
+                                        <img src={`http://localhost:3000/images/${props.thumbnail}`} alt={`${props.title} podcast thumbnail`}/>                                            
                                     </div>
                                     <AppConsumer>
                                         { state => <PlaylistView episode={props.episodes[props.episodes.length -1]} podcast={props.title}/> }

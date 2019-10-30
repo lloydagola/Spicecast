@@ -16,29 +16,44 @@ class App extends React.Component {
       audioState : {
         playing : false,
         nowPlaying:{
-          title: "B.Y.O.B",
-          path: "http://localhost:3000/audio/bubbles.mp3",
+          title: "What is",
+          path: "https://emp.bbc.co.uk/0066df6d-3f70-4809-88f9-653ecfe6a64d",
           thumbnail: "http://localhost:3000/images/no-image.png",
           _id: "5daff1899a645939c0471689",
           podcast: {
               _id: "5d709cd63eb0e22750940d2d",
-              title: "Nostra"
+              title: "Brexit"
           }
       },
         playlistIsHidden : false,
         playlist : []
       },
       podcasts:[],
-      playTrack: track => this.setState(
-          {
+      playTrack: track =>{ 
+        if (track.title == this.state.audioState.nowPlaying.title && this.state.audioState.playing){
+          console.log("pausing ", track.title);
+          this.setState({
             ...this.state,
-            audioState:{   
-              ...this.state.audioState,           
-              playing:true,
-              nowPlaying:track
+            audioState : {
+              ...this.state.audioState, 
+              playing:false
             }
-          }
-      ),
+          });
+          
+        }
+        else{
+          this.setState(
+            {
+              ...this.state,
+              audioState:{   
+                ...this.state.audioState,           
+                playing:true,
+                nowPlaying:track
+              }
+            }
+          )
+        }
+      },
       stopTrack: track => this.setState({}),
       pauseTrack: track => this.setState({}),
       nextTrack: () => this.setState({}),
@@ -70,7 +85,7 @@ class App extends React.Component {
           <MainMenu/>
           <Hero/>
           <PodcastGrid/>
-          <AudioPlayer />
+          <AudioPlayer playing={this.state.audioState.playing} />
           <Footer />
         </AppProvider>
       </div>

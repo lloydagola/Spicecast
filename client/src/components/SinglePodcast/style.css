@@ -1,11 +1,12 @@
 .single-podcast{
     height: 350px;
+    margin: 1px;
+    border-radius: 4px;
     display: grid;
     align-items: center;
     cursor: pointer;
     overflow: hidden;
     position: relative;
-    margin: 1px;
 }
 
 .filter{

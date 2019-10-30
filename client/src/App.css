@@ -15,9 +15,12 @@
   margin: 0;
   overflow-x: hidden;
   cursor: default;
-  background: linear-gradient(to bottom, transparent, 50%, #fff), url("http://localhost:3000/images/hero2.jpeg");
+  background: linear-gradient(to bottom, transparent, 50%, #fff), url("http://localhost:3000/images/hero6.jpg") no-repeat center center fixed;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .vertical-line{

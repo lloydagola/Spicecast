@@ -1,25 +1,45 @@
 
 .playlist-view{
     display: flex;
+    max-width: 90%;
     flex-direction: column;
     position: absolute;
     z-index: 2;
     background-color: #fff;
     bottom: 0;
     margin-bottom: 24px;
+    overflow-x: hidden;
+    
 }
+
+
 
 .playlist-view:hover .podcast-play p,
 .playlist-view:hover .podcast-play i{
     color: darkorange;
 }
 
+.podcast-play{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .podcast-play p, 
 .podcast-play i{
     color: #333;
-    display: inline;
+    padding-right: 4px;
     font-weight: 400;
 }
+
+.podcast-play p{       
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+  }
+
+ 
 
 /*Galaxy S5*/
 @media screen and (min-width:360px){  
@@ -55,7 +75,9 @@
 }
 
 @media screen and (min-width:1200px){
-   
+   .playlist-view{
+        max-width: 70%;
+    }
 
     
 }

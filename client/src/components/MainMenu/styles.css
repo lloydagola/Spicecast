@@ -55,7 +55,6 @@
 
     .menu-items > li{
         padding-left: 40px;
-        font-size: 1.2em;
         text-decoration: none;
     }
 
@@ -77,7 +76,7 @@
         padding: 0 48px;
     }
     .menu-items{       
-        right: -60%;
+        right: -80%;
     }  
 }
 @media screen and (min-width:1400px){
