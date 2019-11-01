@@ -2,10 +2,10 @@ import React from 'react';
 import './App.css';
 import {AppProvider} from './context';
 import MainMenu from './components/MainMenu';
-import Hero from './layouts/Hero';
 import PodcastGrid from './layouts/PodcastGrid';
 import AudioPlayer from './components/AudioPlayer';
-import Footer from './layouts/Footer';
+import SidebarLeft from './components/SidebarLeft';
+import SidebarRight from './components/SidebarRight';
 
 class App extends React.Component {
 
@@ -80,15 +80,24 @@ class App extends React.Component {
 
   render(){      
     return (
-      <div className="App">
         <AppProvider value={{...this.state}}>
-          <MainMenu/>
-          <Hero/>
-          <PodcastGrid/>
-          <AudioPlayer playing={this.state.audioState.playing} />
-          <Footer />
+          <div className="App">
+              
+              <MainMenu/>
+              <div className="main">
+                <SidebarLeft/>        
+                <div className = "main-content">    
+                  <PodcastGrid title={"Recommended for you"} start={0} end={12}/>
+                  <PodcastGrid title={"Popular"} start={7} />
+                </div>                  
+                <SidebarRight/>   
+                
+                              
+              </div>
+              
+              <AudioPlayer playing={this.state.audioState.playing} />
+          </div>
         </AppProvider>
-      </div>
     );
   }
 }

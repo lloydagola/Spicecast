@@ -1,0 +1,100 @@
+.sidebar-left{
+    display: none;
+}
+
+.sidebar-left h5{
+    display: inline;
+    color: #999;
+}
+
+.sidebar-left li{
+    margin-top: 20px;
+}
+
+.sidebar-left .profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.sidebar-left ul{
+    padding: 0;
+}
+
+.sidebar-left ul li div{
+    display: flex;
+    align-items: center;
+    height: 20px;
+}
+
+.sidebar-left ul li i{
+    color: #999;
+    margin-right: 12px;
+    font-size: 1em;
+}
+
+.profile > img{
+    width: 40px;
+    height: 40px;
+    border-radius: 2px;
+}
+
+.profile > div{
+    display: flex;
+    flex-direction: column;
+    padding: 8px 8px;
+}
+
+.profile > div > h5, .profile > div > p{
+    margin: 0;
+}
+
+.profile > div > h5{
+    color: #666;
+}
+
+.profile > div > p{
+    color: #777;
+}
+
+/*ipad*/
+@media screen and (min-width:768px){
+  
+}
+
+/*ipad Pro*/
+@media screen and (min-width:1024px){
+    .sidebar-left{
+        display: block;
+    }  
+}
+
+
+
+/*mdpi laptops*/
+@media screen and (min-width:1200px){
+    .sidebar-left{
+        display: inline;
+    }   
+   
+}
+
+/*hidpi laptops*/
+@media screen and (min-width:1400px){
+
+    .sidebar-content ul li div{
+        height: 30px;
+    }
+    
+    .sidebar-content ul li i{
+        font-size: 1.2em;
+    }
+
+    .profile > div{
+        display: flex;
+        flex-direction: column;
+        padding: 8px 16px;
+    }
+}

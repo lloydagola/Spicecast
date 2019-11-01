@@ -1,0 +1,17 @@
+.sidebar{
+    background-color: #F5F9FC;
+    padding: 0 32px;
+    display: none;
+  }
+
+.sidebar .sidebar-content{
+    position: fixed;
+}
+
+/*ipad Pro*/
+@media screen and (min-width:1024px){
+  .sidebar{
+    display: block;
+  }
+}
+  

@@ -6,9 +6,9 @@ import PlaylistView from "../PlaylistView";
 const SinglePodcast = (props) => <div className="single-podcast">                            
                                     <div className="image-view">
                                         <div className = "podcast-text">
-                                            <h2>{props.title.toUpperCase()}</h2>
+                                            <h4>{props.title.toUpperCase()}</h4>
                                             <h5>{props.hosts[0]} | {props.hosts[1]}</h5>
-                                            <div className="podcast-horizontal-line"/>
+                                            <div className="horizontal-line podcast-horizontal-line white-background"/>
                                         </div> 
                                         <div className="filter"/>
                                         <img src={`http://localhost:3000/images/${props.thumbnail}`} alt={`${props.title} podcast thumbnail`}/>                                            

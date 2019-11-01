@@ -25,7 +25,37 @@
 
 .vertical-line{
   height: 100%;
-  width: 2px;
+  width: 1.5px;
+}
+
+.horizontal-line{
+  width: 100%;
+  height: 2px;
+}
+
+.white{
+  color: #fff;
+}
+.dark{
+  color: #333;
+}
+
+.red{
+  color: #FF3300;
+}
+
+.yellow{
+  color: #ffc900;
+}
+
+.white-background{
+  background-color: #fff;
+}
+.dark-background{
+  background-color: #333;
+}
+.light-grey-background{
+  background-color: rgb(206, 206, 206);
 }
 
 li{
@@ -33,9 +63,35 @@ li{
   list-style: none;
 }
 
+.main{
+  background-color: #fff;  
+}
+
+.main > div {
+  padding:80px 16px;
+}
+
+.main-content{
+  padding: 0 48px;
+}
+
+/*ipad*/
 @media screen and (min-width:768px){
   .App{
     background-size: cover;
+  }
+  .main{
+    margin: 0 40px;
+  }
+}
+
+/*ipad Pro*/
+@media screen and (min-width:1024px){
+  .main{
+    display: grid;
+    margin: 0 80px;
+    grid-template-columns: 2fr 6fr;
+    box-shadow: 0px 2px 24px -12px rgba(0,0,0,0.75);
   }
 }
 
@@ -43,6 +99,32 @@ li{
   .App{
     background-size: cover;
   }
+  .main{
+    display: grid;
+    margin: 0 60px;
+    grid-template-columns: 2fr 6fr 2fr;
+    box-shadow: 0px 2px 24px -12px rgba(0,0,0,0.75);
+  }  
+  .main > div {
+    padding-top:80px;
+  }
+}
+
+@media screen and (min-width:1400px){
+   
+  
+}
+
+@media screen and (min-width:1600px){
+  .main{
+    margin:0 200px;
+    grid-template-columns: 2fr 8fr 2fr;
+  }
+
+  .main > div {
+    padding:120px 16px;
+  }
+
 }
 
 

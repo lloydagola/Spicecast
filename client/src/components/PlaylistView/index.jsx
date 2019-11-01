@@ -14,16 +14,16 @@ const PlaylistView = props => {
                        state => {
                            console.log("playing ",state.audioState.nowPlaying.title,"? ",state.audioState.playing);
                            
-                        return <div className="playlist-view">
-                            <div className="podcast-play" onClick={() => state.playTrack({...props.episode, podcast:{...props.episode.podcast, title:props.podcast}})}>
-                                {
-                                state.audioState.playing && state.audioState.nowPlaying.title === props.episode.title 
-                                ? <i className="far fa-pause-circle"/> 
-                                : <i className="far fa-play-circle"/>
-                                } 
-                                <p>{props.episode.title} </p>                       
-                            </div>  
-                        </div>
+                        return  <div className="playlist-view">
+                                    <div className="podcast-play" onClick={() => state.playTrack({...props.episode, podcast:{...props.episode.podcast, title:props.podcast}})}>
+                                        {
+                                        state.audioState.playing && state.audioState.nowPlaying.title === props.episode.title 
+                                        ? <i className="far fa-pause-circle"/> 
+                                        : <i className="far fa-play-circle"/>
+                                        } 
+                                        <p>{props.episode.title} </p>                       
+                                    </div>  
+                                </div>
                        }
                     }
                 </AppConsumer>  

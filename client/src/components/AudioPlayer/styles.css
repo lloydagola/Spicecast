@@ -10,12 +10,11 @@
     padding: 0 10%;
 }
 
-
 audio{
     color: #fff;
 }
 
-@media screen and (min-width:1200px){
+@media screen and (min-width:768px){
     #audio-player{
         flex-direction: row;
         width: calc(100% - 32px);

@@ -1,18 +1,22 @@
 .podcast-grid{
-    margin: 8px;
+    margin-bottom: 60px;
+}
+
+.podcast-grid >h2{
+    color: #666;
+    margin-top: 0;
 }
 
 .podcast-grid-container{
     display: grid;
     grid-template-columns: 1fr;
-    width: calc(100%);
+    width: calc(100% - 32px);
     margin:auto;
+    padding: 16px;
 }
 
 
-.podcast-grid > h1{    
-    margin: 32px;
-}
+
 
 @media screen and (min-width:480px){
 
@@ -34,26 +38,31 @@
 /*ipad Pro*/
 @media screen and (min-width:1024px){
     .podcast-grid{
-        margin: 16px;
+    }
+    .podcast-grid-container{
+        grid-template-columns: repeat(3, 1fr); 
     }
 }
 /*laptops*/
 @media screen and (min-width:1200px){
-    .podcast-grid-container{
-        grid-template-columns: repeat(4, 1fr);        
-        width: calc(100% - 64px);
+    .podcast-grid{
     }
+    
 }
 @media screen and (min-width:1400px){
     .podcast-grid{
-        margin: 0 100px;
-    }
+        
+    }   
 
 }
 
 @media screen and (min-width:1600px){
     .podcast-grid{
-        margin: 0 200px;
+        margin-bottom: 96px;
+    }
+
+    .podcast-grid-container{
+        grid-template-columns: repeat(4, 1fr); 
     }
 
 }

@@ -1,10 +1,14 @@
 .main-menu{
-    height: 60px;
-    display: flex;
+    height: 40px;
+    width: calc(100% - 120px);
+    position: fixed;
+    z-index: 1000000;
+    display: none;
     flex-direction: row;
     align-items: center;
-    margin: auto;
-    padding: 0 8px;
+    justify-content: center;
+    margin: 0;
+    padding:0;
     background-color: #333;
 }
 
@@ -13,7 +17,7 @@
 }
 
 .menu-logo{
-    font-size: .7em;
+    font-size: .6em;
 }
 
 .menu-logo > a{
@@ -24,7 +28,9 @@
     margin: 0;
 }
 
-
+.menu-items li a{
+    font-size: .85em;
+}
 
 .podcast-grid-horizontal-line{
     background-color: #fff;
@@ -42,14 +48,17 @@
 
 /*ipad*/
 @media screen and (min-width:768px){
+    .main-menu{
+        width: calc(100% - 80px);       
+        margin: 0 40px;        
+        display: flex;
+    }  
    
     .menu-items{
         display: flex;
         flex-direction: row;
         list-style-type: none;
         align-items: center;
-        padding: 0;
-        right: -30%;
         position: relative;
     }
 
@@ -62,23 +71,48 @@
         text-decoration: none;
     }
 }
+
 @media screen and (min-width:900px){
 
 }
 
 /*ipad Pro*/
 @media screen and (min-width:1024px){
-
+    .main-menu{
+        height: 40px;
+        width: calc(100% - 160px);       
+        margin: 0 80px;
+    }  
 }
+
 /*laptops*/
 @media screen and (min-width:1200px){
     .main-menu{
-        padding: 0 48px;
+        height: 40px;
+        width: calc(100% - 120px);
+        margin: 0 60px;
     }
-    .menu-items{       
-        right: -80%;
-    }  
+        
+    
 }
+
 @media screen and (min-width:1400px){
+
+}
+
+@media screen and (min-width:1500px){
+
+}
+
+@media screen and (min-width:1600px){
+    .main-menu{
+        height: 60px;
+        width: calc(100% - 400px);        
+        margin: 0 200px;
+    }
+
+    .menu-logo{
+        font-size: .7em;
+    }
 
 }

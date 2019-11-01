@@ -14,7 +14,6 @@ class AudioPlayer extends React.Component{
             this.player.pause();
             return;
         }
-        this.player.currentTime = 0;
         this.player.play();                
     }
 
