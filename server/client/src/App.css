@@ -108,6 +108,11 @@ li{
   .main > div {
     padding-top:80px;
   }
+
+  .main-content{
+    border-left: 1px#f2f2f2 solid;
+    border-right: 1px#f2f2f2 solid;
+  }
 }
 
 @media screen and (min-width:1400px){
