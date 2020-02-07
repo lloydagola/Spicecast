@@ -6,6 +6,7 @@ import PodcastGrid from './layouts/PodcastGrid';
 import AudioPlayer from './components/AudioPlayer';
 import SidebarLeft from './components/SidebarLeft';
 import SidebarRight from './components/SidebarRight';
+import BASE_URL from './utils/api';
 
 class App extends React.Component {
 
@@ -18,7 +19,7 @@ class App extends React.Component {
         nowPlaying:{
           title: "What is",
           path: "https://emp.bbc.co.uk/0066df6d-3f70-4809-88f9-653ecfe6a64d",
-          thumbnail: "http://localhost:3000/images/no-image.png",
+          thumbnail: `${BASE_URL}/images/no-image.png`,
           _id: "5daff1899a645939c0471689",
           podcast: {
               _id: "5d709cd63eb0e22750940d2d",
@@ -64,7 +65,7 @@ class App extends React.Component {
     
   };
 
-  fetchPodcasts(url = "http://localhost:3000/podcasts") {
+  fetchPodcasts(url = `${BASE_URL}/podcasts`) {
     fetch(url)
         .then(res => res.json()
         )

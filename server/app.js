@@ -12,7 +12,7 @@ const episodeRouter = require('./routes/episodes');
 const mongoose = require("mongoose")
 
 mongoose
-.connect("mongodb://localhost:27017/Spicecast", {useNewUrlParser:true})
+.connect("mongodb://mongo:27017/Spicecast", {useNewUrlParser:true})
 .catch(error => console.log(error));
 
 const mongooseConnection = mongoose.connection;
