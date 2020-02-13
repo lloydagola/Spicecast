@@ -6,7 +6,7 @@ import PodcastGrid from './layouts/PodcastGrid';
 import AudioPlayer from './components/AudioPlayer';
 import SidebarLeft from './components/SidebarLeft';
 import SidebarRight from './components/SidebarRight';
-import BASE_URL from './utils/api';
+import {BASE_URL} from './utils/api';
 
 class App extends React.Component {
 
@@ -30,7 +30,9 @@ class App extends React.Component {
         playlist : []
       },
       podcasts:[],
-      playTrack: track =>{ 
+      playTrack: track => { 
+        console.log(this.state);
+        
         if (track.title == this.state.audioState.nowPlaying.title && this.state.audioState.playing){
           console.log("pausing ", track.title);
           this.setState({
@@ -55,8 +57,28 @@ class App extends React.Component {
           )
         }
       },
+      resumeTrack: () => { 
+        
+        if (this.state.audioState.nowPlaying.title && !this.state.audioState.playing){
+          console.log("resuming ");
+          this.setState({
+            ...this.state,
+            audioState : {
+              ...this.state.audioState, 
+              playing:true
+            }
+          });
+          
+        }
+      },
       stopTrack: track => this.setState({}),
-      pauseTrack: track => this.setState({}),
+      pauseTrack: track => this.setState({
+        ...this.state,
+        audioState:{   
+          ...this.state.audioState,           
+          playing:false
+        }
+      }),
       nextTrack: () => this.setState({}),
       previousTrack: () => this.setState({})
       
@@ -65,7 +87,7 @@ class App extends React.Component {
     
   };
 
-  fetchPodcasts(url = `${BASE_URL}/podcasts`) {
+  fetchPodcasts(url = `${BASE_URL}/api/podcasts`) {
     fetch(url)
         .then(res => res.json()
         )
@@ -96,7 +118,7 @@ class App extends React.Component {
                               
               </div>
               
-              <AudioPlayer playing={this.state.audioState.playing} />
+              <AudioPlayer playing={this.state.audioState.playing} pause={this.state.pauseTrack} resume={this.state.resumeTrack}/>
           </div>
         </AppProvider>
     );

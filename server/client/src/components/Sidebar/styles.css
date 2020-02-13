@@ -1,11 +1,12 @@
 .sidebar{
-    background-color: #fff;
+    background-color: #303030;
     padding: 0 32px;
     display: none;
   }
 
-.sidebar .sidebar-content{
-    position: fixed;
+.sidebar .sidebar-content{  
+    display: flex;
+    justify-content: center;
 }
 
 /*ipad Pro*/

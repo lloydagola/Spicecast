@@ -8,7 +8,7 @@ const podcastSchema = new mongoose.Schema({
     episodes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Episode' }],
     genre:{type:String, default:"TalkShow"},
     tags:{type:Array},
-    thumbnail: {type:String, required:true, default:"./public/images/no-image.png"},
+    thumbnail: {type:String, required:true, default:"images/no-image.jpg"},
     playCount: {type:Number, default:0},
     likes : {type:Number, default:0}
 });

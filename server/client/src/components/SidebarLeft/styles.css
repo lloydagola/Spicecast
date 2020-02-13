@@ -1,10 +1,11 @@
 .sidebar-left{
     display: none;
+    position: fixed;
 }
 
 .sidebar-left h5{
     display: inline;
-    color: #999;
+    color: #fff;
 }
 
 .sidebar-left li{
@@ -30,7 +31,7 @@
 }
 
 .sidebar-left ul li i{
-    color: #999;
+    color: #fff;
     margin-right: 12px;
     font-size: 1em;
 }
@@ -52,11 +53,11 @@
 }
 
 .profile > div > h5{
-    color: #666;
+    color: #fff;
 }
 
 .profile > div > p{
-    color: #777;
+    color: #fff;
 }
 
 /*ipad*/

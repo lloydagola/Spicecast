@@ -14,13 +14,8 @@
   position: relative;
   margin: 0;
   overflow-x: hidden;
-  cursor: default;
-  background: linear-gradient(to bottom, transparent, 50%, #fff), url("http://localhost:3000/images/hero6.jpg") no-repeat center center fixed;
-  background-repeat: no-repeat;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  cursor: default; 
+  background-color: #555;
 }
 
 .vertical-line{
@@ -54,6 +49,10 @@
 .dark-background{
   background-color: #333;
 }
+
+.grey-background{
+  background-color: #444;
+}
 .light-grey-background{
   background-color: rgb(206, 206, 206);
 }
@@ -64,7 +63,7 @@ li{
 }
 
 .main{
-  background-color: #fff;  
+  background-color: #303030;  
 }
 
 .main > div {
@@ -77,11 +76,7 @@ li{
 
 /*ipad*/
 @media screen and (min-width:768px){
-  .App{
-    background-size: cover;
-  }
   .main{
-    margin: 0 40px;
   }
 }
 
@@ -89,7 +84,6 @@ li{
 @media screen and (min-width:1024px){
   .main{
     display: grid;
-    margin: 0 80px;
     grid-template-columns: 2fr 6fr;
     box-shadow: 0px 2px 24px -12px rgba(0,0,0,0.75);
   }
@@ -97,7 +91,6 @@ li{
 
 @media screen and (min-width:1200px){
   .App{
-    background-size: cover;
   }
   .main{
     display: grid;
@@ -110,8 +103,8 @@ li{
   }
 
   .main-content{
-    border-left: 1px#f2f2f2 solid;
-    border-right: 1px#f2f2f2 solid;
+    border-left: 1px#444 solid;
+    border-right: 1px#444 solid;
   }
 }
 

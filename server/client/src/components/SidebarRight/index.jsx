@@ -31,7 +31,7 @@ export default function SidebarRight() {
                         <button>Follow</button>
                     </div>
                 </div>
-                <div className="horizontal-line light-grey-background"/>
+                <div className="horizontal-line grey-background"/>
             </div>
         </Sidebar>
     )

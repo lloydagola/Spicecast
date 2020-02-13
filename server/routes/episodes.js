@@ -35,4 +35,10 @@ router.post("/", (req, res) => {
     
 });
 
+router.put("/", (req, res) => {
+    episode.findByIdAndUpdate(req.body._id, {[req.body.field]:req.body.data})
+    .then(episode => res.status(200).send(episode))
+    .catch(error => res.status(400).send(error));
+});
+
 module.exports = router;

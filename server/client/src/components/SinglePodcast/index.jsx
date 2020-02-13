@@ -1,7 +1,8 @@
 import React from "react";
 import "./style.css";
-import {AppConsumer} from '../../context'
+import {AppConsumer} from '../../context';
 import PlaylistView from "../PlaylistView";
+import {BASE_URL} from '../../utils/api';
 
 const SinglePodcast = (props) => <div className="single-podcast">                            
                                     <div className="image-view">
@@ -11,7 +12,7 @@ const SinglePodcast = (props) => <div className="single-podcast">
                                             <div className="horizontal-line podcast-horizontal-line white-background"/>
                                         </div> 
                                         <div className="filter"/>
-                                        <img src={`http://localhost:3000/images/${props.thumbnail}`} alt={`${props.title} podcast thumbnail`}/>                                            
+                                        <img src={`${BASE_URL}/${props.thumbnail}`} alt={`${props.title} podcast thumbnail`}/>                                            
                                     </div>
                                     <AppConsumer>
                                         { state => <PlaylistView episode={props.episodes[props.episodes.length -1]} podcast={props.title}/> }

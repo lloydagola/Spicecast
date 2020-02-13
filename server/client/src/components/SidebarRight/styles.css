@@ -3,7 +3,7 @@
 }
 
 .sidebar-right h4{
-    color: #666;
+    color: #fff;
     margin-top: 0;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .follow h5, .follow h6{
-    color: #666;
+    color: #fff;
     margin: 4px;
 }
 
@@ -31,11 +31,12 @@
 
 .follow button{
     width: 120px;
-    border-radius: 4px;
+    border-radius: 2px;
     background-color: rgb(40, 127, 185);
     padding: 8px 16px;
     font-weight: 700;
     transition: .2s;
+    border: none;
 }
 
 .follow button:hover{

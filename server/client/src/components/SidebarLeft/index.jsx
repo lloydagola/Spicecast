@@ -14,19 +14,19 @@ export default function SidebarLeft() {
                 </div>
             </div>
                 <ul>
-                    <li><div><i class="far fa-clone"/><h5>Feed</h5></div></li>
-                    <li><div><i class="fas fa-compass"/><h5>New Shows</h5></div></li>
+                    <li><div><i className="far fa-clone"/><h5>Feed</h5></div></li>
+                    <li><div><i className="fas fa-compass"/><h5>New Shows</h5></div></li>
                 </ul>
-                <div className="horizontal-line light-grey-background"/>
+                <div className="horizontal-line grey-background"/>
                 <ul>
-                    <li><div><i class="fas fa-heart"/><h5>Favourites</h5></div></li>
-                    <li><div><i class="fas fa-history"/><h5>History</h5></div></li>
-                    <li><div><i class="far fa-clock"/><h5>Listen Later</h5></div></li>
-                    <li><div><i class="fas fa-list"/><h5>Playlists</h5></div></li>
+                    <li><div><i className="fas fa-heart"/><h5>Favourites</h5></div></li>
+                    <li><div><i className="fas fa-history"/><h5>History</h5></div></li>
+                    <li><div><i className="far fa-clock"/><h5>Listen Later</h5></div></li>
+                    <li><div><i className="fas fa-list"/><h5>Playlists</h5></div></li>
                 </ul>
-                <div className="horizontal-line light-grey-background"/>
+                <div className="horizontal-line grey-background"/>
                 <ul>
-                    <li><div><i class="fas fa-chart-line"/><h5>Trending</h5></div></li>
+                    <li><div><i className="fas fa-chart-line"/><h5>Trending</h5></div></li>
                 </ul>
            </div>
         </Sidebar>
