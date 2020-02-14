@@ -17,8 +17,9 @@ router.get("/:_id", (request, response) => {
 
     Podcast
     .findById(request.params._id)
+    .populate("episodes")
     .then(podcast => {
-        response.status(200).send(podcast.getEpisodes());
+        response.status(200).send(podcast);
     })
     
 })

@@ -1,4 +1,5 @@
 import React from 'react';
+import {HashRouter as Router, Link} from 'react-router-dom';
 import Sidebar from '../Sidebar';
 import './styles.css';
 
@@ -13,13 +14,14 @@ export default function SidebarLeft() {
                     <p>View Profile</p>
                 </div>
             </div>
+            <Router>
                 <ul>
-                    <li><div><i className="far fa-clone"/><h5>Feed</h5></div></li>
+                    <li><Link to="/"><i className="far fa-clone"/><h5>Feed</h5></Link></li>
                     <li><div><i className="fas fa-compass"/><h5>New Shows</h5></div></li>
                 </ul>
                 <div className="horizontal-line grey-background"/>
                 <ul>
-                    <li><div><i className="fas fa-heart"/><h5>Favourites</h5></div></li>
+                    <li><Link to="/podcasts"><i className="fas fa-heart"/><h5>Favourites</h5></Link></li>
                     <li><div><i className="fas fa-history"/><h5>History</h5></div></li>
                     <li><div><i className="far fa-clock"/><h5>Listen Later</h5></div></li>
                     <li><div><i className="fas fa-list"/><h5>Playlists</h5></div></li>
@@ -27,7 +29,8 @@ export default function SidebarLeft() {
                 <div className="horizontal-line grey-background"/>
                 <ul>
                     <li><div><i className="fas fa-chart-line"/><h5>Trending</h5></div></li>
-                </ul>
+                </ul>                
+            </Router>
            </div>
         </Sidebar>
     )

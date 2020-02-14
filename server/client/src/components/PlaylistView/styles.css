@@ -3,12 +3,16 @@
     display: flex;
     max-width: 90%;
     flex-direction: column;
-    position: absolute;
-    z-index: 2;
     background-color: #fff;
-    bottom: 0;
     margin-bottom: 24px;
     overflow-x: hidden;    
+}
+
+.absolute{
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+
 }
 
 

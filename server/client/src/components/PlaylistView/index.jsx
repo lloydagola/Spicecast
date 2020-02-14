@@ -3,29 +3,25 @@ import './styles.css';
 import {AppConsumer} from '../../context';   
 import 'font-awesome/css/font-awesome.min.css';
 
-
-const PlaylistView = props => {
+const PlaylistView = ({track, classes}) => {    
     
-    if(!props.episode){         
-        return <div className="playlist-view"></div>;        
+    if(!track){         
+        return <div className={`playlist-view ${classes}`}></div>;        
     }
     else return <AppConsumer>
                     {
-                       state => {
-                           console.log("playing ",state.audioState.nowPlaying.title,"? ",state.audioState.playing);
-                           
-                        return  <div className="playlist-view">
-                                    <div className="podcast-play" onClick={() => state.playTrack({...props.episode, podcast:{...props.episode.podcast, title:props.podcast}})}>
+                       state => <div className={`playlist-view ${classes ? classes : ""}`}>
+                                    <div className="podcast-play" onClick={() => state.playTrack(track)}>
                                         {
-                                        state.audioState.playing && state.audioState.nowPlaying.title === props.episode.title 
-                                        ? <i className="far fa-pause-circle"/> 
-                                        : <i className="far fa-play-circle"/>
+                                            state.audioState.playState=="playing" && state.audioState.nowPlaying.title === track.title 
+                                            ? <i className="far fa-pause-circle"/> 
+                                            : <i className="far fa-play-circle"/>
                                         } 
-                                        <p>{props.episode.title} </p>                       
+                                        <p>{track.title} </p>                       
                                     </div>  
                                 </div>
                        }
-                    }
+                    
                 </AppConsumer>  
                         
 

@@ -5,7 +5,7 @@ import SinglePodcast from '../../components/SinglePodcast';
 
 const renderPodcasts = (podcasts, start=0, end=-1) => podcasts.length < 1
     ?"No podcasts..."
-    :podcasts.slice(start, end).map((podcast, index) => <SinglePodcast key={index} title={podcast.title} hosts={podcast.hosts} thumbnail={podcast.thumbnail} episodes={podcast.episodes}/>)
+    :podcasts.slice(start, end).map((podcast, index) => <SinglePodcast key={index} podcast={podcast}/>)
     
 
 

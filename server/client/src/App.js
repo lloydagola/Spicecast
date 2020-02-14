@@ -1,11 +1,17 @@
 import React from 'react';
+import {
+  HashRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
 import './App.css';
 import {AppProvider} from './context';
 import MainMenu from './components/MainMenu';
-import PodcastGrid from './layouts/PodcastGrid';
 import AudioPlayer from './components/AudioPlayer';
 import SidebarLeft from './components/SidebarLeft';
 import SidebarRight from './components/SidebarRight';
+import Feed from "./Pages/Feed";
+import PodcastDetails from "./Pages/PodcastDetails";
 import {BASE_URL} from './utils/api';
 
 class App extends React.Component {
@@ -15,10 +21,10 @@ class App extends React.Component {
 
     this.state = {
       audioState : {
-        playing : false,
+        playState : "stopped",
         nowPlaying:{
           title: "What is",
-          path: "https://emp.bbc.co.uk/0066df6d-3f70-4809-88f9-653ecfe6a64d",
+          path: "audio/Brexitcast/Brexitcast-20191025-BrexitcastGoesGLOBAL.mp3",
           thumbnail: `${BASE_URL}/images/no-image.png`,
           _id: "5daff1899a645939c0471689",
           podcast: {
@@ -30,53 +36,54 @@ class App extends React.Component {
         playlist : []
       },
       podcasts:[],
-      playTrack: track => { 
-        console.log(this.state);
+      playTrack: track => {               
         
-        if (track.title == this.state.audioState.nowPlaying.title && this.state.audioState.playing){
-          console.log("pausing ", track.title);
+        if (track.title == this.state.audioState.nowPlaying.title && this.state.audioState.playState != "paused"){
+          console.log("pausing track");
+          
           this.setState({
             ...this.state,
             audioState : {
               ...this.state.audioState, 
-              playing:false
+              playState:'paused'
             }
           });
           
         }
         else{
+          console.log("playing track");
+          
           this.setState(
             {
               ...this.state,
               audioState:{   
                 ...this.state.audioState,           
-                playing:true,
+                playState:'playing',
                 nowPlaying:track
               }
             }
           )
         }
       },
-      resumeTrack: () => { 
-        
-        if (this.state.audioState.nowPlaying.title && !this.state.audioState.playing){
-          console.log("resuming ");
-          this.setState({
+      resumeTrack: () => {   
+        console.log("resuming track");
+              
+        this.setState(
+          {
             ...this.state,
-            audioState : {
-              ...this.state.audioState, 
-              playing:true
+            audioState:{   
+              ...this.state.audioState,           
+              playState:'playing'
             }
-          });
-          
-        }
+          }
+        )
       },
       stopTrack: track => this.setState({}),
       pauseTrack: track => this.setState({
         ...this.state,
         audioState:{   
           ...this.state.audioState,           
-          playing:false
+          playState:'paused'
         }
       }),
       nextTrack: () => this.setState({}),
@@ -98,27 +105,31 @@ class App extends React.Component {
   
 
   componentDidMount(){ 
-    this.fetchPodcasts();    
+    this.fetchPodcasts(); 
+    console.log("audio state:", this.state.audioState.playState);   
   }
 
   render(){      
     return (
         <AppProvider value={{...this.state}}>
           <div className="App">
-              
-              <MainMenu/>
-              <div className="main">
-                <SidebarLeft/>        
-                <div className = "main-content">    
-                  <PodcastGrid title={"Recommended for you"} start={0} end={12}/>
-                  <PodcastGrid title={"Popular"} start={7} />
-                </div>                  
-                <SidebarRight/>   
-                
-                              
-              </div>
-              
-              <AudioPlayer playing={this.state.audioState.playing} pause={this.state.pauseTrack} resume={this.state.resumeTrack}/>
+              <Router> 
+                <MainMenu/>
+                <div className="main">
+                  <SidebarLeft/>        
+                  <div className = "main-content">  
+                    <Switch>
+                      <Route exact path="/podcasts/:id" component={PodcastDetails}/> 
+                      <Route exact path="/">
+                        <Feed/>
+                      </Route> 
+                    </Switch>  
+                    
+                  </div>                  
+                  <SidebarRight/>  
+                </div>
+                <AudioPlayer playState={this.state.audioState.playState} pause={this.state.pauseTrack} resume={this.state.resumeTrack}/>
+              </Router>
           </div>
         </AppProvider>
     );

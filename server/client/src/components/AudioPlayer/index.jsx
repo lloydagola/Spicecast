@@ -16,26 +16,29 @@ class AudioPlayer extends React.Component{
 
     componentDidMount(){
         this.player.addEventListener('pause', () => this.state.pause());
-        this.player.addEventListener('play', () => {
-            if(!this.props.playing){
-                this.state.resume();
-                this.player.play();
-            }
-        });
+        this.player.addEventListener('playing', () => this.state.resume());
     }
 
-    componentDidUpdate(previousProps, previousState){       
-
-        if(!this.props.playing){
-            this.player.pause();
+    componentDidUpdate(previousProps, previousState){ 
+        
+        console.log("previousProps", previousProps);
+        
+        if(this.props.playState == "playing" && previousState.playState != 'paused'){
+            console.log("this.player.play");
             
-            console.log("audio player");
-            console.log(previousProps);
+            this.player.play();
             return;
-            
         }
-        this.player.play();                
-    }
+        if(this.props.playState == "paused" && previousProps.playState == "playing"){
+            console.log("this.player.paused");
+            
+            this.player.pause();
+            return;
+        }
+    }  
+        
+                    
+    
 
     render(){
 

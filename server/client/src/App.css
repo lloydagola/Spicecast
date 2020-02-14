@@ -2,6 +2,14 @@
   color:#fff;
 }
 
+body{
+  height: 100vh;
+}
+
+#root{
+  height: 100%;
+}
+
 .white{
   background-color: #fff;
 }
@@ -13,9 +21,13 @@
 .App {
   position: relative;
   margin: 0;
-  overflow-x: hidden;
   cursor: default; 
   background-color: #555;
+  background: url("https://cdn2.eyeem.com/thumb/26808f697af24fcbb75ccdc272f7d2a1a194ab37-1533814777629/w/1280");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100%;
 }
 
 .vertical-line{
@@ -63,7 +75,8 @@ li{
 }
 
 .main{
-  background-color: #303030;  
+  background-color: rgba(30, 30,30,.9);
+  min-height: 100vh;
 }
 
 .main > div {
