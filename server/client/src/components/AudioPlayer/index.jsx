@@ -2,7 +2,6 @@ import React from 'react';
 import './styles.css';
 import {AppConsumer} from '../../context';
 import {BASE_URL} from '../../utils/api';
-import ProgressBar from './progressBar';
 
 class AudioPlayer extends React.Component{
 
@@ -14,6 +13,10 @@ class AudioPlayer extends React.Component{
             trackDuration : '00:00',
             value : 0
         }
+
+        this.progressBar = React.createRef();
+
+        this.seek = this.seek.bind(this);
         
     }
 
@@ -131,13 +134,15 @@ class AudioPlayer extends React.Component{
         // }
     };
 
-    seek = evt => {
-           const percent = evt.nativeEvent.offsetX / this.offsetWidth;
-           console.log("seeking", this.current.offsetWidth);
-           
-        //   this.player.currentTime = percent * this.player.duration;
-        //     progressbar.value = percent / 100;
-    }
+    seek(evt){
+        const percent = evt.nativeEvent.offsetX / this.progressBar.current.offsetWidth;
+        console.log("seeking", evt.nativeEvent.offsetX);
+        console.log("offsetWidth", this.progressBar.current.offsetWidth);
+        console.log("percent", this.progressBar.value);
+        
+        this.player.currentTime = percent * this.player.duration;
+        this.state.value = percent / 100;
+     }
        
                     
     
@@ -165,7 +170,7 @@ class AudioPlayer extends React.Component{
                                 <i className="fas fa-forward"/>
                             </div>
                             <p>{this.state.currentTime}</p>
-                            <ProgressBar value={this.state.value}/>        
+                            <progress ref={this.progressBar} id="seek-obj" value={this.state.value || 0} max="1" onClick={this.seek}/>        
                             <p>{this.state.trackDuration}</p>
                         </section> 
                     }                    
