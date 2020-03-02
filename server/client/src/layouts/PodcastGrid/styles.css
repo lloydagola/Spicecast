@@ -4,15 +4,12 @@
 
 .podcast-grid >h2{
     color: #fff;
-    margin-top: 0;
 }
 
 .podcast-grid-container{
     display: grid;
     grid-template-columns: 1fr;
-    width: calc(100% - 32px);
     margin:auto;
-    padding: 16px;
 }
 
 
@@ -46,6 +43,10 @@
 /*laptops*/
 @media screen and (min-width:1200px){
     .podcast-grid{
+        
+    }
+    .podcast-grid-container{
+        grid-template-columns: repeat(4, 1fr); 
     }
     
 }
@@ -62,7 +63,7 @@
     }
 
     .podcast-grid-container{
-        grid-template-columns: repeat(4, 1fr); 
+        grid-template-columns: repeat(6, 1fr); 
     }
 
 }

@@ -86,8 +86,6 @@
 @media screen and (min-width:1200px){
     .main-menu{
         height: 40px;
-        width: calc(100% - 120px);
-        margin: 0 60px;
     }
         
     
@@ -104,8 +102,6 @@
 @media screen and (min-width:1600px){
     .main-menu{
         height: 60px;
-        width: calc(100% - 400px);        
-        margin: 0 200px;
     }
 
     .menu-logo{

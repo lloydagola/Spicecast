@@ -1,33 +1,97 @@
-#audio-player{
+.audio-player {
+    background-color: #333;
+    border: 1px solid #333;
     display: flex;
-    width: 100vw;
-    flex-direction: column;
     position: fixed;
     bottom: 0;
-    z-index: 10000;
+    z-index: 10000000;
     cursor: pointer;
-    background-color: rgba(30,30,30,1);
-    border-top: 1px solid #333;
-    padding: 0 10%;
-}
-
-audio{
+    align-items: center;
+    flex-direction: row;
+    width: 90%;
+    bottom: 0;
     color: #fff;
-}
-
-@media screen and (min-width:768px){
-    #audio-player{
-        flex-direction: row;
-        width: calc(100% - 32px);
-        align-items: center;
-    }
-
-    audio{        
-        width: 40%;
-    }
+    padding: 0 5%;
     
-    .audio-details{
-        width: 40%;
-    }
+}
+    
+.audio-player img {
+    height: 48px;
+    width: 48px;
+    border-radius: 48%;
+    background-size: cover;
+    margin: 4px;
 }
 
+.audio-title{    
+    width: 360px;
+    margin: 0 20px;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    overflow: hidden;   
+    display: block;
+    white-space:nowrap;     
+}
+
+.audio-title h4{
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.player-controls{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    width: 250px;
+}
+
+.scrubber {
+    align-items: center;
+    justify-content: center;
+    flex: 3;
+    display: flex;
+}
+
+progress {
+    width: 90%;
+    margin: 0 4px;
+}
+
+progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: white;
+    color: blue;
+    height: 5px;
+}
+
+progress[value]::-webkit-progress-bar {
+    background-color: white;
+    border-radius: 2px;
+    border: 1px solid lighten(#acacac, 20%);
+    color: blue;
+}
+
+progress::-webkit-progress-value {
+    background-color: blue;
+}
+
+.audio-player i {
+    cursor: pointer;
+    transition: ease-in .1s;
+    justify-self: center;
+}
+
+.audio-player i:hover{
+    color: darkorange;
+    transition: ease-in .1s;
+}
+.play-icon {
+    font-size: 24px;
+
+}
+.pause-icon {
+    font-size: 20px;
+
+}
+  

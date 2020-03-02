@@ -107,8 +107,7 @@ li{
   }
   .main{
     display: grid;
-    margin: 0 60px;
-    grid-template-columns: 2fr 6fr 2fr;
+    grid-template-columns: 1.2fr 6fr 1.5fr;
     box-shadow: 0px 2px 24px -12px rgba(0,0,0,0.75);
   }  
   .main > div {
@@ -128,13 +127,10 @@ li{
 
 @media screen and (min-width:1600px){
   .main{
-    margin:0 200px;
-    grid-template-columns: 2fr 8fr 2fr;
+    grid-template-columns: 1.2fr 8fr 1.2fr;
   }
 
-  .main > div {
-    padding:120px 16px;
-  }
+  
 
 }
 

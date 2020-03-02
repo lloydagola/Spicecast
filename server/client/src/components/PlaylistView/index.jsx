@@ -14,10 +14,10 @@ const PlaylistView = ({track, classes}) => {
                                     <div className="podcast-play" onClick={() => state.playTrack(track)}>
                                         {
                                             state.audioState.playState=="playing" && state.audioState.nowPlaying.title === track.title 
-                                            ? <i className="far fa-pause-circle"/> 
+                                            ? <i className="far fa-pause-circle playing"/> 
                                             : <i className="far fa-play-circle"/>
                                         } 
-                                        <p>{track.title} </p>                       
+                                        <p className="playing">{track.title} </p>                       
                                     </div>  
                                 </div>
                        }

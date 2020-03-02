@@ -1,9 +1,10 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import "./styles.css";
 
 const MainMenu = () => <menu className="main-menu">
     <div className="menu-logo">
-        <a href="localhost:3001"><h1> <i className="fas fa-stream"/> Spicecast</h1></a>
+        <Link to="/"><h1> <i className="fas fa-stream"/> Spicecast</h1></Link>
     </div>
     <ul className="menu-items">         
         <li><a href="localhost:3001"><i className="fas fa-plus"/> Post</a></li>

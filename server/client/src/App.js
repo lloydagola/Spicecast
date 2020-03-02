@@ -21,15 +21,15 @@ class App extends React.Component {
 
     this.state = {
       audioState : {
-        playState : "stopped",
+        playState : "loaded",
         nowPlaying:{
           title: "What is",
           path: "audio/Brexitcast/Brexitcast-20191025-BrexitcastGoesGLOBAL.mp3",
-          thumbnail: `${BASE_URL}/images/no-image.png`,
           _id: "5daff1899a645939c0471689",
           podcast: {
               _id: "5d709cd63eb0e22750940d2d",
-              title: "Brexit"
+              title: "Brexit",
+              thumbnail: `images/no-image.jpg`,
           }
       },
         playlistIsHidden : false,
@@ -38,7 +38,7 @@ class App extends React.Component {
       podcasts:[],
       playTrack: track => {               
         
-        if (track.title == this.state.audioState.nowPlaying.title && this.state.audioState.playState != "paused"){
+        if (track.title == this.state.audioState.nowPlaying.title && this.state.audioState.playState == "playing"){
           console.log("pausing track");
           
           this.setState({
@@ -47,8 +47,7 @@ class App extends React.Component {
               ...this.state.audioState, 
               playState:'paused'
             }
-          });
-          
+          });          
         }
         else{
           console.log("playing track");
@@ -65,32 +64,43 @@ class App extends React.Component {
           )
         }
       },
-      resumeTrack: () => {   
-        console.log("resuming track");
-              
-        this.setState(
-          {
-            ...this.state,
-            audioState:{   
-              ...this.state.audioState,           
-              playState:'playing'
-            }
+      stopTrack: () => {  
+        console.log("stopping...");
+         
+        this.setState({
+          ...this.state,
+          audioState : {
+            ...this.state.audioState, 
+            playState:'stopped'
           }
-        )
+        });             
+        
       },
-      stopTrack: track => this.setState({}),
-      pauseTrack: track => this.setState({
-        ...this.state,
-        audioState:{   
-          ...this.state.audioState,           
-          playState:'paused'
+      toggleTrack: () => {  
+        if(this.state.audioState.playState === "playing"){
+          this.setState(
+            {
+              ...this.state,
+              audioState:{   
+                ...this.state.audioState,           
+                playState:'paused'
+              }
+            }
+          )  
+        }else{
+          this.setState(
+            {
+              ...this.state,
+              audioState:{   
+                ...this.state.audioState,           
+                playState:'playing'
+              }
+            }
+          )  
         }
-      }),
-      nextTrack: () => this.setState({}),
-      previousTrack: () => this.setState({})
+      }
       
-    }
-
+}
     
   };
 
@@ -122,13 +132,14 @@ class App extends React.Component {
                       <Route exact path="/podcasts/:id" component={PodcastDetails}/> 
                       <Route exact path="/">
                         <Feed/>
-                      </Route> 
+                      </Route>
+                      <Route render={() => <div><h2>Not found...</h2></div>} />
                     </Switch>  
                     
                   </div>                  
                   <SidebarRight/>  
                 </div>
-                <AudioPlayer playState={this.state.audioState.playState} pause={this.state.pauseTrack} resume={this.state.resumeTrack}/>
+                <AudioPlayer audioState={this.state.audioState} toggleTrack={this.state.toggleTrack} stopTrack={this.state.stopTrack}/>
               </Router>
           </div>
         </AppProvider>

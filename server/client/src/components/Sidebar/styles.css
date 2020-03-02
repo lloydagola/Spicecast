@@ -3,6 +3,15 @@
     display: none;
   }
 
+  .sidebar a {
+    text-decoration: none;
+  }
+
+  .sidebar a:hover h5,
+  .sidebar a:hover i{
+    color: darkorange;
+  }
+
 .sidebar .sidebar-content{  
     display: flex;
     justify-content: center;

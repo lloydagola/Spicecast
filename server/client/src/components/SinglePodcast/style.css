@@ -8,6 +8,10 @@
     position: relative;
 }
 
+.single-podcast a{
+    text-decoration: none;
+}
+
 .filter{
     background-color: rgba(0, 0, 0, 0.1);
     height: 100%;
@@ -34,7 +38,7 @@
     position: absolute;
     z-index: 2;
     top: 0;
-    width: 90%;
+    width: calc(90%);
     margin: 16px 0 0 16px;
 }    
 
@@ -42,6 +46,19 @@
 .podcast-text > h2{
     padding: 0;
 }
+
+.podcast-text h4 {
+    text-overflow: ellipsis;
+    width: calc(100%);
+    overflow: hidden;
+    word-break: break-all;
+    word-spacing: 9999rem;
+}
+h4 ~ h4 {
+    /* Undo last assignment */
+    word-spacing: unset;
+    display: table-caption;
+  }
 
 .podcast-horizontal-line{
     width: 32px;

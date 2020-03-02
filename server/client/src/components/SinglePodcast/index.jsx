@@ -11,8 +11,12 @@ const SinglePodcast = ({podcast, podcast : {title, _id, thumbnail, hosts, episod
                                         <div className="image-view">
                                             <div className = "podcast-text">
                                                 <Link to ={`/podcasts/${_id}`}><h4>{title.toUpperCase()}</h4></Link>
-                                                <h5>{hosts[0]} | {hosts[1]}</h5>
                                                 <div className="horizontal-line podcast-horizontal-line white-background"/>
+                                                {
+                                                    hosts.length < 1
+                                                    ?""
+                                                    :<h5>{hosts[0]} | {hosts[1]}</h5>
+                                                }
                                             </div> 
                                             <div className="filter"/>
                                             <img src={`${BASE_URL}/${thumbnail}`} alt={`${title} podcast thumbnail`}/>                                            
