@@ -1,5 +1,6 @@
 .single-podcast{
     height: 350px;
+    width: 99%;
     margin: 1px;
     display: grid;
     align-items: center;
@@ -49,7 +50,7 @@
 
 .podcast-text h4 {
     text-overflow: ellipsis;
-    width: calc(100%);
+    width: calc(100% - 16px);
     overflow: hidden;
     word-break: break-all;
     word-spacing: 9999rem;
@@ -157,23 +158,23 @@ h4 ~ h4 {
 /*ipad*/
 @media screen and (min-width:768px){
     .single-podcast{
-        height: 360px;
+        height: 300px;
     }
 
     .single-podcast .image-view img{   
-        height: 360px;
+        height: 300px;
     }        
 }
 
 /*ipad Pro*/
 @media screen and (min-width:1024px){
     .single-podcast{
-        height: 240px;
+        height: 280px;
     }
     .podcast-vertical-widget{}
 
     .single-podcast .image-view img{   
-        height: 240px;
+        height: 280px;
     }
     
 }

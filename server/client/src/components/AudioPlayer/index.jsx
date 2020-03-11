@@ -91,12 +91,14 @@ class AudioPlayer extends React.Component{
         stopTrack();
     }
 
+    nextTrack = () => {}
+
     togglePlayButton = playState => playState === 'playing' ? 'fas fa-pause pause-icon' : 'far fa-play-circle play-icon'
 
     calculateTotalValue(trackDuration) {
         var minutes = Math.floor( trackDuration / 60),
           seconds_int = this.player.duration - minutes * 60,
-          seconds_str = seconds_int.toString(),
+          seconds_str = seconds_int < 10 ? '0' + seconds_int.toString() : seconds_int.toString(),
           seconds = seconds_str.substr(0, 2),
           time = minutes + ':' + seconds        
           
@@ -158,10 +160,11 @@ class AudioPlayer extends React.Component{
                                     Your browser does not support the
                                     <code>audio</code> element.
                                     <source src={`${BASE_URL}/${state.audioState.nowPlaying.path}`} type="audio/mpeg"/>
+                                    <source src="http://localhost:4000/music/Xilent/we are dust/01 From Dust.mp3" type="audio/mpeg"/>
                             </audio>
-                            <img src={`${BASE_URL}/${state.audioState.nowPlaying.podcast.thumbnail}`}/>
+                            <img src={`${BASE_URL}/${state.audioState.nowPlaying.parent.thumbnail}`}/>
                             <div className="audio-title">
-                                <h4>{state.audioState.nowPlaying.podcast.title} - {state.audioState.nowPlaying.title}</h4>
+                                <h4>{state.audioState.nowPlaying.parent.title} - {state.audioState.nowPlaying.title}</h4>
                             </div>
                             <div className="player-controls">
                                 <i className={this.togglePlayButton(state.audioState.playState)} onClick={() => this.togglePlayState(this.props.toggleTrack)}/>

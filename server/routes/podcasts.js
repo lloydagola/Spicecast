@@ -8,6 +8,7 @@ router.get('/', (request, response) => {
     Podcast
     .find()
     .populate("episodes")
+    .populate("hosts", ["title"])
     .then(podcasts => response.status(200).send(podcasts))
     .catch(error => response.status(400).send(error));   
 });
@@ -18,6 +19,7 @@ router.get("/:_id", (request, response) => {
     Podcast
     .findById(request.params._id)
     .populate("episodes")
+    .populate("hosts", ["title"])
     .then(podcast => {
         response.status(200).send(podcast);
     })

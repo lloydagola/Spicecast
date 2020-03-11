@@ -5,22 +5,30 @@ import {AppConsumer} from '../../context';
 import PlaylistView from "../PlaylistView";
 import {BASE_URL} from '../../utils/api';
 
+const renderHosts = contributors => 
+    contributors
+    ?contributors.map(contributor => contributor.title + " | ")
+    :""
+
+
 const SinglePodcast = ({podcast, podcast : {title, _id, thumbnail, hosts, episodes}}) => {
        
-                                return <div className="single-podcast">                            
+                                return <div className="single-podcast">    
+                                 <Link to ={`/podcasts/${_id}`}>
                                         <div className="image-view">
                                             <div className = "podcast-text">
-                                                <Link to ={`/podcasts/${_id}`}><h4>{title.toUpperCase()}</h4></Link>
+                                               <h4>{title.toUpperCase()}</h4>
                                                 <div className="horizontal-line podcast-horizontal-line white-background"/>
                                                 {
                                                     hosts.length < 1
                                                     ?""
-                                                    :<h5>{hosts[0]} | {hosts[1]}</h5>
+                                                    :<h5>{renderHosts(hosts)}</h5>
                                                 }
                                             </div> 
                                             <div className="filter"/>
                                             <img src={`${BASE_URL}/${thumbnail}`} alt={`${title} podcast thumbnail`}/>                                            
                                         </div>
+                                     </Link>                        
                                         <AppConsumer>
                                             { state => 
                                                 episodes.length < 1

@@ -23,6 +23,7 @@
 .playlist-view:hover .podcast-play p,
 .playlist-view:hover .podcast-play i{
     color: darkorange;
+    transition: ease-in .1s;
 }
 
 .podcast-play{
@@ -37,6 +38,7 @@
 .podcast-play p, 
 .podcast-play i{
     color: #333;
+    transition: ease-in .1s;
     padding-right: 4px;
 }
 

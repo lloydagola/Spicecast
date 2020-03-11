@@ -12,6 +12,7 @@ import SidebarLeft from './components/SidebarLeft';
 import SidebarRight from './components/SidebarRight';
 import Feed from "./Pages/Feed";
 import PodcastDetails from "./Pages/PodcastDetails";
+import AlbumDetails from "./Pages/AlbumDetails";
 import {BASE_URL} from './utils/api';
 
 class App extends React.Component {
@@ -26,16 +27,17 @@ class App extends React.Component {
           title: "What is",
           path: "audio/Brexitcast/Brexitcast-20191025-BrexitcastGoesGLOBAL.mp3",
           _id: "5daff1899a645939c0471689",
-          podcast: {
+          parent: {
               _id: "5d709cd63eb0e22750940d2d",
               title: "Brexit",
               thumbnail: `images/no-image.jpg`,
           }
       },
-        playlistIsHidden : false,
-        playlist : []
+      playlistIsHidden : false,
+      playlist : []
       },
       podcasts:[],
+      albums: [],
       playTrack: track => {               
         
         if (track.title == this.state.audioState.nowPlaying.title && this.state.audioState.playState == "playing"){
@@ -50,7 +52,7 @@ class App extends React.Component {
           });          
         }
         else{
-          console.log("playing track");
+          console.log("playing track", this.state.audioState);
           
           this.setState(
             {
@@ -100,23 +102,33 @@ class App extends React.Component {
         }
       }
       
-}
+  }
     
   };
 
   fetchPodcasts(url = `${BASE_URL}/api/podcasts`) {
     fetch(url)
-        .then(res => res.json()
-        )
-        .then(data => this.setState({podcasts:data})
-        )   
-        .catch(error => console.log("error", error))    
+    .then(res => res.json()
+    )
+    .then(podcasts => this.setState({podcasts})
+    )   
+    .catch(error => console.log("error", error));    
+  }
+
+  fetchAlbums(url = `${BASE_URL}/api/albums`){
+    console.log("url:",url);
+    
+    fetch(url)
+    .then(res => res.json())
+    .then(albums => this.setState({...this.state, albums}))
+    .catch(error => console.log("error", error));
   }
   
 
   componentDidMount(){ 
     this.fetchPodcasts(); 
-    console.log("audio state:", this.state.audioState.playState);   
+    this.fetchAlbums(); 
+    console.log("audio state:", this.state);   
   }
 
   render(){      
@@ -130,6 +142,7 @@ class App extends React.Component {
                   <div className = "main-content">  
                     <Switch>
                       <Route exact path="/podcasts/:id" component={PodcastDetails}/> 
+                      <Route exact path="/albums/:id" component={AlbumDetails}/> 
                       <Route exact path="/">
                         <Feed/>
                       </Route>

@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 
 const podcastSchema = new mongoose.Schema({
     title : {type: String, required: true},
-    hosts : {type:Array, required:true, default:["Untitled Presenter"]},
     guests: {type:Array},
-    episodes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Episode' }],
+    hosts :   [{type:mongoose.Schema.Types.ObjectId, required:true, ref:"Host"}],
+    episodes: [{type:mongoose.Schema.Types.ObjectId, ref: 'Episode' }],
     genre:{type:String, default:"TalkShow"},
     tags:{type:Array},
     thumbnail: {type:String, required:true, default:"images/no-image.jpg"},
