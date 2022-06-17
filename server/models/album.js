@@ -6,7 +6,7 @@ const albumSchema = new mongoose.Schema({
     tracks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Track'}],
     genre:{type:Array, default:["pop"]},
     tags:{type:Array},
-    year: {type:Number, required: true},
+    year: {type:Number, required: true, default:2020},
     thumbnail: {type:String, required:true, default:"images/no-image.jpg"},
 });
 

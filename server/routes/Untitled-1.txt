@@ -1,0 +1,22 @@
+[
+  {
+    fieldname: 'file',
+    originalname: '01 From Dust.mp3',
+    encoding: '7bit',
+    mimetype: 'audio/mpeg',
+    destination: './uploads',
+    filename: 'file-1584007717247',
+    path: 'uploads\\file-1584007717247',
+    size: 6241706
+  },
+  {
+    fieldname: 'file',
+    originalname: '09 Only Now.mp3',
+    encoding: '7bit',
+    mimetype: 'audio/mpeg',
+    destination: './uploads',
+    filename: 'file-1584007717373',
+    path: 'uploads\\file-1584007717373',
+    size: 10594748
+  }
+]

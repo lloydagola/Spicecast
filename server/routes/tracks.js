@@ -1,8 +1,12 @@
 const express = require("express");
+const multer = require("multer");
 const track = require("../models/track");
 const album = require("../models/album");
 
 const router = express.Router();
+
+
+
 
 router.get("/",(req, res) => {
     track
@@ -37,10 +41,6 @@ router.post("/", (req, res) => {
         .catch(error => res.status(400).send(error))
     })
     .catch(error => res.status(400).send(error))
-    
-});
-
-router.post("/many", (req, res) => {
     
 });
 

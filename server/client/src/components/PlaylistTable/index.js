@@ -1,6 +1,5 @@
 import React from 'react';
 import './styles.css';
-import {AppConsumer} from '../../context';   
 
 const renderContributors = contributors => 
     contributors
@@ -14,22 +13,16 @@ const setUpTrack = (track, artist) => ({
     ...track, parent : {...track.parent, title: artist}
 })
 
-const PlaylistTable = ({items, parent, contributors, album}) => 
-        <AppConsumer>
-        {    
-            state => <div>
+const PlaylistTable = ({items, parent, contributors, album, playTrack}) => <div>
                         <table>
                             <tbody>
                                 {
                                     items
                                     ?items.map(
-                                        (item, index) => <tr key={index} onClick={() =>  album ? state.playTrack(setUpTrack({...item, parent}, contributors[0].title)) : state.playTrack({...item, parent})}><td>{item.title}</td><td>{renderContributors(contributors)}</td></tr>)
+                                        (item, index) => <tr key={index} onClick={() =>  album ? playTrack(setUpTrack({...item, parent}, contributors[0].title)) : playTrack({...item, parent})}><td>{item.title}</td><td>{renderContributors(contributors)}</td></tr>)
                                     : "loading..."
                                 }
                             </tbody>
                         </table>            
                     </div>
-        }
-        </AppConsumer>
-
 export default PlaylistTable;

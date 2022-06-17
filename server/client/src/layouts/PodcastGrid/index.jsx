@@ -3,26 +3,19 @@ import './styles.css';
 import {AppConsumer} from '../../context';
 import SinglePodcast from '../../components/SinglePodcast';
 
-const renderPodcasts = (podcasts, start=0, end=-1) => podcasts.length < 1
+const renderPodcasts = (podcasts = [], start=0, end=-1) => podcasts.length < 1
     ?"No podcasts..."
     :podcasts.slice(start, end).map((podcast, index) => <SinglePodcast key={index} podcast={podcast}/>)
-    
 
 
 
 
-const PodcastGrid = (props) => (
-    <AppConsumer>
-        { 
-            state =>   <section className ="podcast-grid">
+const PodcastGrid = (props) => <section className ="podcast-grid">
                             <h2>{props.title}</h2>
                             <div className="podcast-grid-container">
-                                {renderPodcasts(state.podcasts, props.start, props.end)}        
+                                {renderPodcasts(props.podcasts, props.start, props.end)}        
                             </div>
                         </section>
-        }
-    </AppConsumer>
-    
-);
+        
 
 export default PodcastGrid;

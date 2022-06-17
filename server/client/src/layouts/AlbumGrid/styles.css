@@ -4,67 +4,13 @@
 
 .album-grid >h2{
     color: #fff;
+    margin-left: 16px;
 }
 
 .album-grid-container{
     display: grid;
-    grid-template-columns: 1fr;
+    grid-gap: 1px;       
+    grid-template-columns: repeat(auto-fill, 200px);
+    justify-content: center;
     margin:auto;
 }
-
-
-
-
-@media screen and (min-width:480px){
-
-}
-@media screen and (min-width:600px){
-
-}
-
-/*ipad*/
-@media screen and (min-width:768px){
-    .album-grid-container{
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-@media screen and (min-width:900px){
-
-}
-
-/*ipad Pro*/
-@media screen and (min-width:1024px){
-    .album-grid{
-    }
-    .album-grid-container{
-        grid-template-columns: repeat(3, 1fr); 
-    }
-}
-/*laptops*/
-@media screen and (min-width:1200px){
-    .album-grid{
-        
-    }
-    .album-grid-container{
-        grid-template-columns: repeat(4, 1fr); 
-    }
-    
-}
-@media screen and (min-width:1400px){
-    .album-grid{
-        
-    }   
-
-}
-
-@media screen and (min-width:1600px){
-    .album-grid{
-        margin-bottom: 96px;
-    }
-
-    .album-grid-container{
-        grid-template-columns: repeat(5, 1fr); 
-    }
-
-}
-

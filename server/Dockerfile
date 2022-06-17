@@ -1,21 +1,14 @@
 FROM node:latest
 
-WORKDIR /usr/src/app 
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install -g nodemon && npm install
+RUN npm install -g nodemon
+RUN npm install
 
 COPY . .
 
-WORKDIR /usr/src/app/client
+EXPOSE 5000
 
-RUN npm install && npm run build
-
-WORKDIR /usr/src/app
-
-EXPOSE 4000
-
-CMD ["npm", "start"]
-
-
+CMD ["nodemon", "bin/www"]

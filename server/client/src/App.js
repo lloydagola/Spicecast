@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   HashRouter as Router,
   Route,
@@ -15,7 +15,7 @@ import PodcastDetails from "./Pages/PodcastDetails";
 import AlbumDetails from "./Pages/AlbumDetails";
 import {BASE_URL} from './utils/api';
 
-class App extends React.Component {
+class ClassApp extends React.Component {
 
   constructor(props){
     super(props);
@@ -25,16 +25,16 @@ class App extends React.Component {
         playState : "loaded",
         nowPlaying:{
           title: "What is",
-          path: "audio/Brexitcast/Brexitcast-20191025-BrexitcastGoesGLOBAL.mp3",
+          path: "audio/default.mp3",
           _id: "5daff1899a645939c0471689",
           parent: {
               _id: "5d709cd63eb0e22750940d2d",
               title: "Brexit",
               thumbnail: `images/no-image.jpg`,
           }
-      },
-      playlistIsHidden : false,
-      playlist : []
+        },
+        playlistIsHidden : false,
+        playlist : []
       },
       podcasts:[],
       albums: [],
@@ -158,6 +158,130 @@ class App extends React.Component {
         </AppProvider>
     );
   }
+}
+
+const App = () => {
+
+  const [audioState, setAudioState] = useState({
+    playState : "loaded",
+    nowPlaying:{
+      title: "What is",
+      path: "audio/default.mp3",
+      _id: "5daff1899a645939c0471689",
+      parent: {
+          _id: "5d709cd63eb0e22750940d2d",
+          title: "Brexit",
+          thumbnail: `images/no-image.jpg`,
+      }
+    },
+    playlistIsHidden : false,
+    playlist : []
+  })
+
+  const [podcasts, setPodcasts] = useState([])
+  const [albums, setAlbums] = useState([])
+
+
+  function fetchPodcasts(url = `${BASE_URL}/api/podcasts`) {
+    fetch(url)
+    .then(res => res.json()
+    )
+    .then(podcasts => this.setState({podcasts})
+    )   
+    .catch(error => console.log("error", error));    
+  }
+
+  function fetchAlbums(url = `${BASE_URL}/api/albums`){
+    console.log("url:",url);
+    
+    fetch(url)
+    .then(res => res.json())
+    .then(albums => this.setState({...this.state, albums}))
+    .catch(error => console.log("error", error));
+  }
+
+  const playTrack = track => {               
+        
+    if (track.title === audioState.nowPlaying.title && audioState.playState == "playing"){
+      console.log("pausing track");
+      
+      setAudioState({
+          ...audioState, 
+          playState:'paused'        
+      }); 
+      return         
+    }
+    else{
+      console.log("playing track", this.state.audioState);
+      
+      setAudioState({   
+        ...audioState,           
+        playState:'playing',
+        nowPlaying:track
+    });
+    return
+    }
+  }
+  const stopTrack = () => {  
+    console.log("stopping...");
+     
+    setAudioState({
+        ...audioState, 
+        playState:'stopped'      
+    });             
+    
+  }
+  const toggleTrack = () => {  
+    if(audioState.playState === "playing"){
+      setAudioState(
+        {
+          ...this.state,
+          audioState:{   
+            ...this.state.audioState,           
+            playState:'paused'
+          }
+        }
+      )  
+    }else{
+      setAudioState({   
+            ...audioState,           
+            playState:'playing'         
+        })  
+    }
+  }
+  
+
+  useEffect(() => { 
+    fetchPodcasts(); 
+    fetchAlbums(); 
+  }, [])
+   
+  return (
+      <AppProvider value={audioState}>
+        <div className="App">
+            <Router> 
+              <MainMenu/>
+              <div className="main">
+                <SidebarLeft/>        
+                <div className = "main-content">  
+                  <Switch>
+                    <Route exact path="/podcasts/:id" component={PodcastDetails}/> 
+                    <Route exact path="/albums/:id" component={AlbumDetails}/> 
+                    <Route exact path="/">
+                      <Feed/>
+                    </Route>
+                    <Route render={() => <div><h2>Not found...</h2></div>} />
+                  </Switch>  
+                  
+                </div>                  
+                <SidebarRight/>  
+              </div>
+              <AudioPlayer audioState={audioState} toggleTrack={toggleTrack} stopTrack={stopTrack}/>
+            </Router>
+        </div>
+      </AppProvider>
+  );
+  
 }
 
 export default App;

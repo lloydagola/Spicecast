@@ -79,13 +79,11 @@ li{
   min-height: 100vh;
 }
 
+
 .main > div {
-  padding:80px 16px;
+  padding-top:20px;
 }
 
-.main-content{
-  padding: 0 48px;
-}
 
 /*ipad*/
 @media screen and (min-width:768px){
@@ -97,8 +95,12 @@ li{
 @media screen and (min-width:1024px){
   .main{
     display: grid;
-    grid-template-columns: 2fr 6fr;
+    grid-template-columns: 1fr 6fr;
     box-shadow: 0px 2px 24px -12px rgba(0,0,0,0.75);
+  }
+
+  .main > div {
+    padding-top:80px;
   }
 }
 
@@ -110,9 +112,6 @@ li{
     grid-template-columns: 1.2fr 6fr 1.5fr;
     box-shadow: 0px 2px 24px -12px rgba(0,0,0,0.75);
   }  
-  .main > div {
-    padding-top:80px;
-  }
 
   .main-content{
     border-left: 1px#444 solid;

@@ -16,6 +16,8 @@ router.post("/", (req, res) => {
         return;
     }
 
+    console.log("badia", req.body);
+
     new host({...req.body})
     .save()
     .then(host => req.status(200).send(host))

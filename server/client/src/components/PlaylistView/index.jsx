@@ -1,6 +1,5 @@
 import React from 'react';
-import './styles.css';
-import {AppConsumer} from '../../context';   
+import './styles.css'; 
 import 'font-awesome/css/font-awesome.min.css';
 
 //allows us to reuse the same component for both podcasts and music
@@ -11,26 +10,22 @@ const formatTrack = ({title, path, _id, podcast, album}) => ({
     parent: podcast || album
 });
 
-const PlaylistView = ({track, classes}) => {    
+const PlaylistView = ({track, classes, playTrack, audioState}) => {    
     
     if(!track){         
         return <div className={`playlist-view ${classes}`}></div>;        
     }
-    else return <AppConsumer>
-                    {
-                       state => <div className={`playlist-view ${classes ? classes : ""}`}>
-                                    <div className="podcast-play" onClick={() => state.playTrack(formatTrack(track))}>
+    else return <div className={`playlist-view ${classes ? classes : ""}`}>
+                                    <div className="podcast-play" onClick={() => playTrack(formatTrack(track))}>
                                         {
-                                            state.audioState.playState=="playing" && state.audioState.nowPlaying.title === track.title 
+                                            audioState.playState=="playing" && audioState.nowPlaying.title === track.title 
                                             ? <i className="far fa-pause-circle playing"/> 
                                             : <i className="far fa-play-circle"/>
                                         } 
                                         <p className="playing">{track.title} </p>                       
                                     </div>  
                                 </div>
-                       }
-                    
-                </AppConsumer>  
+                        
                         
 
    

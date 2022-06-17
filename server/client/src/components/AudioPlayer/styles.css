@@ -17,8 +17,8 @@
 }
     
 .audio-player img {
-    height: 48px;
-    width: 48px;
+    height: 40px;
+    width: 40px;
     border-radius: 48%;
     background-size: cover;
     margin: 4px;
@@ -37,6 +37,7 @@
 .audio-title h4{
     text-overflow: ellipsis;
     overflow: hidden;
+    margin: 0;
 }
 
 .player-controls{
@@ -64,7 +65,7 @@ progress[value] {
     appearance: none;
     background-color: white;
     color: blue;
-    height: 5px;
+    height: 2px;
 }
 
 progress[value]::-webkit-progress-bar {
@@ -80,18 +81,14 @@ progress::-webkit-progress-value {
     cursor: pointer;
     transition: ease-in .1s;
     justify-self: center;
+    font-size: 12px;
 }
 
 .audio-player i:hover{
     color: darkorange;
     transition: ease-in .1s;
 }
+
 .play-icon {
-    font-size: 24px;
-
+    font-size: 18px !important;
 }
-.pause-icon {
-    font-size: 20px;
-
-}
-  

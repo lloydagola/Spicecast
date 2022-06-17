@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {createContext} from 'react';
 
-export const AppContext = React.createContext({});
+export const AppContext = createContext({});
 
-export const AppProvider = AppContext.Provider;
+export const AppProvider =({children}) => {
 
-export const AppConsumer = AppContext.Consumer;
+    return <AppContext.Provider>
+        {children}
+    </AppContext.Provider>
+};
 

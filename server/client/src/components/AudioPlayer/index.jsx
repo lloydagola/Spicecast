@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.css';
-import {AppConsumer} from '../../context';
 import {BASE_URL} from '../../utils/api';
 
-class AudioPlayer extends React.Component{
+class ClassAudioPlayer extends React.Component{
 
     constructor(props){
         super(props);
@@ -144,42 +143,76 @@ class AudioPlayer extends React.Component{
         
         this.player.currentTime = percent * this.player.duration;
         this.state.value = percent / 100;
-     }
-       
-                    
-    
+     }  
 
     render(){
-        
-
-        return <AppConsumer>
-                    {
-                    state => <section id="audio-player" className="audio-player">   
+        return <section id="audio-player" className="audio-player">   
                             <audio
                                 ref={ref => this.player = ref}>
                                     Your browser does not support the
                                     <code>audio</code> element.
-                                    <source src={`${BASE_URL}/${state.audioState.nowPlaying.path}`} type="audio/mpeg"/>
+                                    <source src={`${BASE_URL}/${this.props.audioState.nowPlaying.path}`} type="audio/mpeg"/>
                                     <source src="http://localhost:4000/music/Xilent/we are dust/01 From Dust.mp3" type="audio/mpeg"/>
                             </audio>
-                            <img src={`${BASE_URL}/${state.audioState.nowPlaying.parent.thumbnail}`}/>
+                            <img src={`${BASE_URL}/${this.props.audioState.nowPlaying.parent.thumbnail}`}/>
                             <div className="audio-title">
-                                <h4>{state.audioState.nowPlaying.parent.title} - {state.audioState.nowPlaying.title}</h4>
+                                <h4>{this.props.audioState.nowPlaying.parent.title} - {this.props.audioState.nowPlaying.title}</h4>
                             </div>
                             <div className="player-controls">
-                                <i className={this.togglePlayButton(state.audioState.playState)} onClick={() => this.togglePlayState(this.props.toggleTrack)}/>
+                                <i className={this.togglePlayButton(this.props.audioState.playState)} onClick={() => this.togglePlayState(this.props.toggleTrack)}/>
                                 <i className="fas fa-backward"/>
-                                <i className="fas fa-stop" onClick={() => this.stopTrack(state.stopTrack)}/>
+                                <i className="fas fa-stop" onClick={() => this.stopTrack(this.props.stopTrack)}/>
                                 <i className="fas fa-forward"/>
                             </div>
                             <p>{this.state.currentTime}</p>
                             <progress ref={this.progressBar} id="seek-obj" value={this.state.value || 0} max="1" onClick={this.seek}/>        
                             <p>{this.state.trackDuration}</p>
                         </section> 
-                    }                    
-               </AppConsumer> 
+                   
     }
 } 
+
+const AudioPlayer = props => {
+    const {audioState, togglePlayState, toggleTrack, stopTrack} = props
+
+    const [value, setValue] = useState(0)
+    const [currentTime, setCurrentTime] = useState(0)
+    const [trackDuration, setTrackDuration] = useState(0)
+
+    const togglePlayButton = playState => playState === 'playing' ? 'fas fa-pause pause-icon' : 'far fa-play-circle play-icon'
+    const seek = (evt) => {
+        const percent = 50 //evt.nativeEvent.offsetX / this.progressBar.current.offsetWidth;
+        console.log("seeking", evt.nativeEvent.offsetX);
+        console.log("offsetWidth");
+        console.log("percent");
+        
+        //this.player.currentTime = percent * this.player.duration;
+        //this.state.value = percent / 100;
+     }
+
+    return <section id="audio-player" className="audio-player">   
+                <audio>
+                        Your browser does not support the
+                        <code>audio</code> element.
+                        <source src={`${BASE_URL}/${audioState.nowPlaying.path}`} type="audio/mpeg"/>
+                        <source src="http://localhost:4000/music/Xilent/we are dust/01 From Dust.mp3" type="audio/mpeg"/>
+                </audio>
+                <img src={`${BASE_URL}/${audioState.nowPlaying.parent.thumbnail}`}/>
+                <div className="audio-title">
+                    <h4>audioState.nowPlaying.parent.title - audioState.nowPlaying.title</h4>
+                </div>
+                <div className="player-controls">
+                    <i className='fas fa-backward' />
+                    <i className="fas fa-backward"/>
+                    <i className="fas fa-stop" />
+                    <i className="fas fa-forward"/>
+                </div>
+                <p>{currentTime}</p>
+                <progress id="seek-obj" value={value || 0} max="1" onClick={seek}/>        
+                <p>{trackDuration}</p>
+            </section> 
+
+}
     
     export default AudioPlayer;
 

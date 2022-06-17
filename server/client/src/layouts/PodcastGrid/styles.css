@@ -4,66 +4,21 @@
 
 .podcast-grid >h2{
     color: #fff;
+    margin-left: 16px;
 }
 
 .podcast-grid-container{
     display: grid;
-    grid-template-columns: 1fr;
     margin:auto;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fill, 200px); 
+    grid-gap: 1px;   
 }
 
-
-
-
-@media screen and (min-width:480px){
-
-}
-@media screen and (min-width:600px){
-
-}
-
-/*ipad*/
-@media screen and (min-width:768px){
-    .podcast-grid-container{
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-@media screen and (min-width:900px){
-
-}
-
-/*ipad Pro*/
-@media screen and (min-width:1024px){
-    .podcast-grid{
-    }
-    .podcast-grid-container{
-        grid-template-columns: repeat(3, 1fr); 
-    }
-}
-/*laptops*/
-@media screen and (min-width:1200px){
-    .podcast-grid{
-        
-    }
-    .podcast-grid-container{
-        grid-template-columns: repeat(4, 1fr); 
-    }
-    
-}
-@media screen and (min-width:1400px){
-    .podcast-grid{
-        
-    }   
-
-}
 
 @media screen and (min-width:1600px){
     .podcast-grid{
         margin-bottom: 96px;
-    }
-
-    .podcast-grid-container{
-        grid-template-columns: repeat(5, 1fr); 
     }
 
 }
