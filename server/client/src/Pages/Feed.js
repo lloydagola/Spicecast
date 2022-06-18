@@ -1,6 +1,6 @@
 import React from 'react';
-import PodcastGrid from '../layouts/PodcastGrid';
-import AlbumGrid from '../layouts/AlbumGrid';
+import PodcastGrid from '../layouts/PodcastGrid/PodcastGrid';
+import AlbumGrid from '../layouts/AlbumGrid/AlbumGrid';
 
 export default function Feed() {
     return (

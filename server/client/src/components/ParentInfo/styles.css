@@ -3,6 +3,19 @@
     margin-bottom: 32px;
 }
 
+
+.parent-info img{
+    width: 25%;
+    padding: .5rem;
+    border-radius: 2px;
+}
+
+.parent-info-text{
+    padding: .5rem;
+}
+
+
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen
 and (min-width : 320px)
@@ -51,10 +64,6 @@ and (min-width : 1224px) {
     .parent-info{
         display: flex;
         flex-direction: row;
-    }
-    .parent-info img{
-        width: 240px;
-        border-radius: 2px;
     }
 
     .parent-info-text{

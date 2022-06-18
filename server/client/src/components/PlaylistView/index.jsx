@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AudioContext } from '../../context/AudioContext';
 import './styles.css'; 
 import 'font-awesome/css/font-awesome.min.css';
 
@@ -10,7 +11,9 @@ const formatTrack = ({title, path, _id, podcast, album}) => ({
     parent: podcast || album
 });
 
-const PlaylistView = ({track, classes, playTrack, audioState}) => {    
+const PlaylistView = ({track, classes, }) => {    
+
+    const {audioState, playTrack} = useContext(AudioContext)
     
     if(!track){         
         return <div className={`playlist-view ${classes}`}></div>;        

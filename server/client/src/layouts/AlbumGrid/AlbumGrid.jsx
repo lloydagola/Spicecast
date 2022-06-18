@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './styles.css';
-import SingleAlbum from '../../components/SingleAlbum';
+import { AudioContext } from '../../context/AudioContext';
+import SingleAlbum from '../../components/SingleAlbum/SingleAlbum';
 
 const renderAlbums = (albums = [], start=0, end=-1) => albums.length < 1
     ?"No albums..."
@@ -8,13 +9,16 @@ const renderAlbums = (albums = [], start=0, end=-1) => albums.length < 1
 
 
 
-const AlbumGrid = props => <section className ="album-grid">
+const AlbumGrid = props => {
+    const {albums} = useContext(AudioContext)
+
+    return <section className ="album-grid">
                             <h2>{props.title}</h2>
                             <div className="album-grid-container">
                                 {
-                                    renderAlbums(props.albums, props.start, props.end)
+                                    renderAlbums(albums, props.start, props.end)
                                 }        
                             </div>
                         </section>
-
+}
 export default AlbumGrid;
