@@ -98,33 +98,29 @@ const AudioPlayer = props => {
         player.current.load();
         player.current.play(); 
 
-    }, [audioState.nowPlaying.title])
+        console.log(audioState);
+
+    }, [audioState.nowPlaying.path])
 
     useEffect(() => {
-        if(audioState.playState === 'playing'){
-            player.current.play();            
-        }
-        //if someone pauses a song
-        else if(audioState.playState === 'paused'){
-            player.current.pause();            
-        }
-        //if someone resumes a previously paused track
-        else if(audioState.playState === "playing"){                      
-            player.current.play();
-        }
-       
-        //if someone restarts the same track
-        else if(audioState.playState === "playing"){
-            player.current.load();
-            player.current.play();
-        }
-        //if someone resumes a stopped track
-        else if(audioState.playState === "stopped"){            
-            player.current.load();
-        }
-        else{
-            return;
-        }
+
+        switch(audioState.playState){
+            case 'paused':
+                player.current.pause();
+                break
+            //if someone resumes a previously paused track
+            case "playing":                      
+                player.current.play();  
+                break
+            //if someone resumes a stopped track
+            case "stopped":            
+                player.current.load();
+                break
+            
+            default:
+                player.current.play(); 
+        } 
+        
 
     }, [audioState.playState])
 
