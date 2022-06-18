@@ -1,16 +1,18 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import "./style.css";
-import PlaylistView from "../PlaylistView";
+import PlaylistView from "../PlaylistView/PlaylistView";
 import {BASE_URL} from '../../utils/api';
 
 const renderHosts = contributors => 
     contributors
     ?contributors.map(contributor => contributor.title + " | ")
-    :""
+    :null
 
 
-const SinglePodcast = ({podcast, podcast : {title, _id, thumbnail, hosts, episodes}}) => {
+const SinglePodcast = React.memo(({podcast, podcast : {title, _id, thumbnail, hosts, episodes}}) => {
+
+    console.log(title);
        
                                 return <div className="single-podcast">    
                                  <Link to ={`/podcasts/${_id}`}>
@@ -29,7 +31,7 @@ const SinglePodcast = ({podcast, podcast : {title, _id, thumbnail, hosts, episod
                                         </div>
                                      </Link>     
                                 {episodes.length < 1
-                                ?""
+                                ?null
                                 :<PlaylistView track={{...episodes[episodes.length - 1], podcast:podcast}} classes="absolute"/>}
                                             
                                         
@@ -46,7 +48,7 @@ const SinglePodcast = ({podcast, podcast : {title, _id, thumbnail, hosts, episod
                                         <div className="vertical-line white"/>
                                     </div>                       
                                 </div>
-                            }
+                            })
                    
         
 

@@ -11,7 +11,13 @@ const formatTrack = ({title, path, _id, podcast, album}) => ({
     parent: podcast || album
 });
 
-const PlaylistView = ({track, classes, }) => {    
+const areEqualTracks = (prevProps, nextProps) => {
+    console.log({prevProps, nextProps});
+
+    return prevProps === nextProps
+}
+
+const PlaylistView = React.memo(({track, classes, }) => {    
 
     const {audioState, playTrack} = useContext(AudioContext)
     
@@ -21,17 +27,13 @@ const PlaylistView = ({track, classes, }) => {
     else return <div className={`playlist-view ${classes ? classes : ""}`}>
                                     <div className="podcast-play" onClick={() => playTrack(formatTrack(track))}>
                                         {
-                                            audioState.playState=="playing" && audioState.nowPlaying.title === track.title 
+                                            audioState.playState=="playing" && audioState.nowPlaying.path === track.path 
                                             ? <i className="far fa-pause-circle playing"/> 
                                             : <i className="far fa-play-circle"/>
                                         } 
                                         <p className="playing">{track.title} </p>                       
                                     </div>  
                                 </div>
-                        
-                        
-
-   
-};
+});
 
 export default PlaylistView;

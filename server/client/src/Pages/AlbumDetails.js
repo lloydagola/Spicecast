@@ -2,7 +2,7 @@ import React from 'react';
 import {BASE_URL} from '../utils/api';
 
 import ParentInfo from '../components/ParentInfo';
-import PlaylistView from '../components/PlaylistView';
+import PlaylistView from '../components/PlaylistView/PlaylistView';
 import PlaylistTable from '../components/PlaylistTable';
 
 class AlbumDetails extends React.Component {

@@ -2,10 +2,10 @@ import React from "react";
 import {Link} from 'react-router-dom';
 import "./style.css";
 import {AppConsumer} from '../../context/AudioContext';
-import PlaylistView from "../PlaylistView";
+import PlaylistView from "../PlaylistView/PlaylistView";
 import {BASE_URL} from '../../utils/api';
 
-const SingleAlbum = ({album, album : {title, _id, thumbnail, contributingArtists, tracks}}) => 
+const SingleAlbum = React.memo(({album, album : {title, _id, thumbnail, contributingArtists, tracks}}) => 
                                 <div className="single-album"> 
                                     <Link to ={`/albums/${_id}`}>
                                         <div className="album-art">
@@ -20,5 +20,5 @@ const SingleAlbum = ({album, album : {title, _id, thumbnail, contributingArtists
                                         </div>  
                                     </Link>
                                 </div>
-
+)
 export default SingleAlbum;
