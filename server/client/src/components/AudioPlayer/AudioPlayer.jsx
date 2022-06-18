@@ -9,6 +9,9 @@ const AudioPlayer = props => {
     const [value, setValue] = useState(0)
     const [currentTime, setCurrentTime] = useState('00:00')
     const [trackDuration, setTrackDuration] = useState(0)
+
+    const player = useRef(null)
+    const progressBarRef = useRef(null)
     
     const calculateTotalValue = (trackDuration) => {
         var minutes = Math.floor( trackDuration / 60),
@@ -35,45 +38,22 @@ const AudioPlayer = props => {
     
     const seek = (evt) => {
         const percent = evt.nativeEvent.offsetX / progressBarRef.current.offsetWidth;
-        console.log("seeking", evt.nativeEvent.offsetX);
-        console.log("offsetWidth");
-        console.log("percent");
         
         player.current.currentTime = percent * player.current.duration;
         setValue(percent / 100);
     }
 
     const updateProgressBar = () => player.current.currentTime / player.current.duration;
-      
-    const initProgressBar = () => {        
-              
-        // var progressbar = document.getElementById('seek-obj');
-    
-        // console.log("player.currentTime / player.duration", player.currentTime / player.duration);
-        
-    
-        // progressbar.value = (player.currentTime / player.duration);
-        // progressbar.addEventListener("click", seek);
-      
-      
-        // function seek(evt) {
-        //   var percent = evt.offsetX / this.offsetWidth;
-        //   player.currentTime = percent * player.duration;
-        //   progressbar.value = percent / 100;
-        // }
-    };
 
     const handlePlay = toggleTrack => {
 
         toggleTrack()
         if (player.current.paused === false) {
             player.current.pause();
-            console.log("toggle pause");
             
         }
         else {
-            player.current.play();            
-            console.log("toggle play");
+            player.current.play();  
         }
     }
 
@@ -82,23 +62,19 @@ const AudioPlayer = props => {
         stopTrack();
     }
 
-    const player = useRef(null)
-    const progressBarRef = useRef(null)
-
     useEffect(() => {
         player.current.onloadedmetadata = () => setTrackDuration(calculateTotalValue(player.current.duration.toFixed(0)));                 
         player.current.ontimeupdate = e => {
                 setCurrentTime(calculateCurrentValue(e.srcElement.currentTime))
                 setValue(updateProgressBar())
             }
-    }, [])
+    }, [value])
 
     useEffect(() => {    
         //if someone selects a new song
         player.current.load();
         player.current.play(); 
-
-        console.log(audioState);
+        console.log("playing because path changed...");
 
     }, [audioState.nowPlaying.path])
 
@@ -109,7 +85,8 @@ const AudioPlayer = props => {
                 player.current.pause();
                 break
             //if someone resumes a previously paused track
-            case "playing":                      
+            case "playing":    
+                console.log('playing because playstate changed...');                  
                 player.current.play();  
                 break
             //if someone resumes a stopped track

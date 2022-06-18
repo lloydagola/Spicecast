@@ -58,7 +58,6 @@ export const AudioProvider = ({children}) => {
   const playTrack = track => {               
         
     if (track.title === audioState.nowPlaying.title && audioState.playState == "playing"){
-      console.log("pausing track");
       
       setAudioState({
           ...audioState, 
@@ -67,7 +66,6 @@ export const AudioProvider = ({children}) => {
       return         
     }
     else{
-      console.log("playing track", audioState);
       
       setAudioState({   
         ...audioState,           
@@ -78,7 +76,6 @@ export const AudioProvider = ({children}) => {
     }
   }
   const stopTrack = () => {  
-    console.log("stopping...");
      
     setAudioState({
         ...audioState, 

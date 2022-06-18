@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import './styles.css';
 import {AppConsumer} from '../../context/AudioContext';
-import SinglePodcast from '../../components/SinglePodcast';
+import SinglePodcast from '../../components/SinglePodcast/SinglePodcast';
 import { AudioContext, AudioProvider } from '../../context/AudioContext';
 
 const renderPodcasts = (podcasts = [], start=0, end=-1) => podcasts.length < 1
