@@ -8,8 +8,9 @@ services:
             - '4000:4000'
         links : 
             - mongo
-    mongo:
-        container_name : mongo
-        image: mongo
-        ports : 
-            - '27017:27017'
+        networks:
+            - spice_cast_app-network
+
+    networks:
+        spice_cast_app-network:
+            external: true
