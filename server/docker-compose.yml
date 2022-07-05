@@ -23,4 +23,5 @@ services:
 
     networks:
         spicecast_app-network:
-            name: app-network
+            external:
+                name: app-network
