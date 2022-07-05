@@ -19,8 +19,8 @@ services:
         links : 
             - mongo
         networks:
-            - proxy_app-network
+            - spicecast_app-network
 
     networks:
-        proxy_app-network:
-            name:app-network
+        spicecast_app-network:
+            name: app-network
