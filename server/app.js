@@ -32,7 +32,11 @@ mongoose
     useFindAndModify: false,
     useCreateIndex: true,
   })
-  .catch((error) => console.log("error", error));
+  .catch((error) => {
+    console.log("could not connect to the databse error");
+    console.log(uri);
+    console.log(error);
+  });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
