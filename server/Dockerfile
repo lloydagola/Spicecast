@@ -9,6 +9,6 @@ RUN npm install
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 4040
 
 CMD ["nodemon", "bin/www"]
