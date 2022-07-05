@@ -1,9 +1,19 @@
 version: '3'
 services:
-    app:
-        container_name: spice_cast
-        restart: always
+    spicecast:
+        container_name: spicecast
+        image: nodejs
         build : .
+        restart: unless-stopped
+        env_file: ~/config/.env
+        environment:
+            - MONGO_USERNAME=$MONGO_USERNAME
+            - MONGO_PASSWORD=$MONGO_PASSWORD
+            - MONGO_HOSTNAME=$MONGO_HOSTNAME
+            - MONGO_PORT=$MONGO_PORT
+            - MONGO_DB=$MONGO_DB
+        volumes:
+            - ./:/usr/src/app
         ports : 
             - '4000:4000'
         links : 
