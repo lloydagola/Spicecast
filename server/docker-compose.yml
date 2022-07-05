@@ -22,6 +22,6 @@ services:
             - spicecast_app-network
 
     networks:
-        spicecast_app-network:
-            external:
-                name: app-network
+        default:
+            name: app-network
+            external: true
