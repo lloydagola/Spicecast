@@ -15,26 +15,25 @@ const genreRouter = require("./routes/genres");
 const hostRouter = require("./routes/hosts");
 const buffetRouter = require("./routes/buffet");
 
-const MONGO_USER = "admin";
-const MONGO_PASS = "admin";
-const MONGO_HOST = "localhost";
-const MONGO_PORT = "27017";
-const MONGO_DB = "spicecast";
+const { MONGO_USERNAME, MONGO_PASSWORD, MONGO_HOSTNAME, MONGO_PORT, MONGO_DB } =
+  process.env;
 
-const uri = `mongodb://${MONGO_USER}:${MONGO_PASS}@${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
-const uri2 = "mongodb://127.0.0.1:27017/spicecast";
+const mongo_url = `mongodb://${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}`;
 
 const mongoose = require("mongoose");
 mongoose
-  .connect(uri, {
+  .connect(mongo_url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true,
+    auth: { authSource: "admin" },
+    user: MONGO_USERNAME,
+    pass: MONGO_PASSWORD,
   })
   .catch((error) => {
     console.log("could not connect to the databse error");
-    console.log(uri);
+    console.log(mongo_url);
     console.log(error);
   });
 
