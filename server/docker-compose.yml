@@ -1,11 +1,11 @@
 version: '3'
 services:
     spicecast:
-        container_name: Spicecast
+        container_name: spicecast
         image: nodejs
         build : .
         restart: unless-stopped
-        env_file: .env
+        env_file: ~/config/.env
         environment:
             - MONGO_USERNAME=$MONGO_USERNAME
             - MONGO_PASSWORD=$MONGO_PASSWORD
@@ -13,23 +13,16 @@ services:
             - MONGO_PORT=$MONGO_PORT
             - MONGO_DB=$MONGO_DB
         volumes:
-            -./:/usr/src/app
+            - ./:/usr/src/app
         ports : 
             - '4040:4040'
         networks:
             - spicecast-network
+
+networks:
+	spicecast-network:
+		external:
+			name: app-network
+	
         
-    mongo:
-        container_name : mongo
-        image: mongo
-        restart: unless-stopped        
-        env_file: .env  
-        environment:
-            - MONGO_INITDB_ROOT_USERNAME=$MONGO_USERNAME
-            - MONGO_INITDB_ROOT_PASSWORD=$MONGO_PASSWORD
-        volumes:
-            - mongo-data:/data/db
-        ports : 
-            - '27017:27017'
-        networks:
-            - spicecast-network
+    
